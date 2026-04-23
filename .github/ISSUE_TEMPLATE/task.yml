@@ -1,0 +1,48 @@
+name: Feature / Task
+description: New feature or implementation task
+labels: ["enhancement"]
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      placeholder: One-line description of the task
+    validations:
+      required: true
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Phase
+      options:
+        - "Phase 1 — Foundation"
+        - "Phase 2 — RAG Core"
+        - "Phase 3 — Agent Framework"
+        - "Phase 4 — Fine-Tuning"
+        - "Phase 5 — Evals"
+        - "Phase 6 — Launch"
+    validations:
+      required: true
+  - type: dropdown
+    id: owner
+    attributes:
+      label: Owner
+      options:
+        - Kishan (AI Platform)
+        - Data Analyst (Data & Retrieval)
+        - DevOps Intern (Infrastructure)
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Implementation Notes
+      placeholder: Any relevant docs, links, or hints
