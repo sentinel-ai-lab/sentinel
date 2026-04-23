@@ -1,0 +1,26 @@
+# =============================================================
+# Sentinel — CODEOWNERS
+# Defines who reviews PRs touching each area.
+# Format: <pattern> <owner1> <owner2>
+# =============================================================
+
+# --- Global fallback — Kishan reviews everything ---
+*                               @kishanaik5
+
+# --- AI Platform (Kishan owns) ---
+packages/agents/                @kishanaik5
+packages/evals/                 @kishanaik5
+packages/common/                @kishanaik5
+apps/api/                       @kishanaik5
+docs/adr/                       @kishanaik5
+
+# --- Data & Retrieval (Data Analyst owns) ---
+packages/ingestion/             @kishanaik5
+packages/retrieval/             @kishanaik5
+docs/data-sources.md            @kishanaik5
+scripts/                        @kishanaik5
+
+# --- Infrastructure (DevOps Intern owns) ---
+infra/                          @kishanaik5
+.github/                        @kishanaik5
+Makefile                        @kishanaik5

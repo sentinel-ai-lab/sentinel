@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+.venv/
+venv/
+.python-version
+
+# uv
+.uv/
+
+# Environment — NEVER commit real .env
+infra/.env
+.env
+*.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Testing + coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Alembic (keep versions/, ignore local state)
+alembic/versions/__pycache__/
+
+# Model weights (large files — use HuggingFace instead)
+*.bin
+*.safetensors
+*.gguf
+*.pt
+*.pth
+checkpoints/
+runs/
+
+# Temp ingestion files
+tmp/
+downloads/
+*.pdf.tmp
+
+# Docker
+.docker/
+
+# Logs
+*.log
+logs/
