@@ -1,107 +1,45 @@
-version: "3.9"
-
-# =============================================================
-# Sentinel — Local Development Stack
-# Usage: make up
-# =============================================================
-
 services:
 
-  # -----------------------------------------------------------
-  # PostgreSQL with pgvector extension
-  # Hosts: filing data, chunks, embeddings (via pgvector)
-  # -----------------------------------------------------------
   postgres:
     image: pgvector/pgvector:pg16
-    container_name: sentinel_postgres
+    container_name: sentinel-postgres
     restart: unless-stopped
+
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-sentinel}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sentinel_dev}
-      POSTGRES_DB: ${POSTGRES_DB:-sentinel}
+      POSTGRES_USER: sentinel
+      POSTGRES_PASSWORD: sentinel
+      POSTGRES_DB: sentinel
+
     ports:
       - "5432:5432"
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init-scripts:/docker-entrypoint-initdb.d
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sentinel} -d ${POSTGRES_DB:-sentinel}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
 
-  # -----------------------------------------------------------
-  # Redis
-  # Used for: API rate limiting, response caching, task queues
-  # -----------------------------------------------------------
+
   redis:
     image: redis:7-alpine
-    container_name: sentinel_redis
+    container_name: sentinel-redis
     restart: unless-stopped
+
     ports:
       - "6379:6379"
-    volumes:
-      - redis_data:/data
-    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
-  # -----------------------------------------------------------
-  # Langfuse — LLM Observability (self-hosted)
-  # Dashboard: http://localhost:3000
-  # Tracks: traces, costs, latency, eval scores
-  # -----------------------------------------------------------
-  langfuse_db:
-    image: postgres:16-alpine
-    container_name: sentinel_langfuse_db
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: langfuse
-      POSTGRES_PASSWORD: langfuse_dev
-      POSTGRES_DB: langfuse
-    volumes:
-      - langfuse_db_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U langfuse -d langfuse"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
   langfuse:
-    image: langfuse/langfuse:latest
-    container_name: sentinel_langfuse
+    image: langfuse/langfuse:2
+    container_name: sentinel-langfuse
     restart: unless-stopped
-    depends_on:
-      langfuse_db:
-        condition: service_healthy
+
+    environment:
+      DATABASE_URL: postgresql://sentinel:sentinel@postgres:5432/sentinel
+
     ports:
       - "3000:3000"
-    environment:
-      DATABASE_URL: postgresql://langfuse:langfuse_dev@langfuse_db:5432/langfuse
-      NEXTAUTH_URL: http://localhost:3000
-      NEXTAUTH_SECRET: ${LANGFUSE_SECRET:-sentinel_langfuse_secret_dev}
-      SALT: ${LANGFUSE_SALT:-sentinel_salt_dev}
-      ENCRYPTION_KEY: ${LANGFUSE_ENCRYPTION_KEY:-0000000000000000000000000000000000000000000000000000000000000000}
-      TELEMETRY_ENABLED: "false"
-      LANGFUSE_ENABLE_EXPERIMENTAL_FEATURES: "false"
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3000/api/public/health || exit 1"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 30s
 
-# -----------------------------------------------------------
-# Volumes
-# -----------------------------------------------------------
+    depends_on:
+      - postgres
+
+
 volumes:
   postgres_data:
-    driver: local
-  redis_data:
-    driver: local
-  langfuse_db_data:
-    driver: local
