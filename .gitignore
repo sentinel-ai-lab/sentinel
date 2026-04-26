@@ -12,6 +12,7 @@ venv/
 
 # uv
 .uv/
+uv.*
 
 # Environment — NEVER commit real .env
 infra/.env
