@@ -114,6 +114,46 @@ make up       # starts Postgres, Redis, Langfuse
 make ps       # verify all services are healthy
 ```
 
+> **Windows Note**
+>
+> If `make` is unavailable on Windows, run:
+>
+> ```bash
+> docker compose -f infra/docker-compose.dev.yml up -d
+> docker ps
+> ```
+>
+> To stop services:
+>
+> ```bash
+> docker compose -f infra/docker-compose.dev.yml down
+> ```
+
+### Local Services
+
+| Service | Endpoint |
+|---|---|
+| PostgreSQL | localhost:5432 |
+| Redis | localhost:6379 |
+| Langfuse | http://localhost:3000 |
+
+### Connection Strings (Local Development)
+
+```env
+DATABASE_URL=postgresql://sentinel:sentinel@localhost:5432/sentinel
+REDIS_URL=redis://localhost:6379
+```
+
+> **Note:** Inside Docker containers, use:
+>
+> ```env
+> DATABASE_URL=postgresql://sentinel:sentinel@postgres:5432/sentinel
+> REDIS_URL=redis://redis:6379
+> ```
+
+> **Dev Note:** Langfuse is pinned to v2 in local development due to v3 ClickHouse dependency requirements.
+```
+
 ### 4. Run ingestion (Phase 1 milestone)
 
 ```bash
@@ -204,7 +244,7 @@ All PRs must:
 |---|---|---|
 | Kishan K | Lead / AI Platform Engineer | [@kishanaik5](https://github.com/kishanaik5) |
 | TBD | Data & Retrieval Engineer | — |
-| TBD | DevOps & Infrastructure Engineer | — |
+| Aishwarya H R | DevOps & Infrastructure Engineer | [@18Aishwarya14](https://github.com/18Aishwarya14) |
 
 ---
 
