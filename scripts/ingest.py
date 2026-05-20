@@ -153,7 +153,6 @@ def ingest(
             filing_type=FilingType.annual_report,
             fiscal_year=fiscal_year,
             pdf_url=pdf_url,
-            source="NSE",
             ingested_at=datetime.now(timezone.utc),
         )
         session.add(filing)
@@ -165,10 +164,11 @@ def ingest(
             raw_text=parsed.raw_text,
             page_count=parsed.page_count,
             file_size_bytes=parsed.file_size_bytes,
+            is_scanned=parsed.is_likely_scanned,
         )
         session.add(raw_doc)
         session.commit()
-        typer.echo(f"  + Created raw_document : {len(parsed.raw_text):,} chars stored")
+        typer.echo(f"  + Created raw_document : {len(parsed.raw_text or ''):,} chars stored")
 
     typer.echo(f"\nDone. {ticker.upper()} FY{fiscal_year} annual report ingested successfully.")
 
