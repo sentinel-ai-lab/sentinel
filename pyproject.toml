@@ -23,7 +23,7 @@ dependencies = [
     # Cache
     "redis>=5.0.4",
     # HTTP
-    "httpx>=0.27.0",
+    "httpx[http2]>=0.27.0",
     "tenacity>=8.3.0",
     # PDF parsing
     # pymupdf replaces pdfplumber — has Python 3.13 wheels, faster, better table extraction
@@ -33,6 +33,14 @@ dependencies = [
     # Utilities
     "python-dotenv>=1.0.1",
     "structlog>=24.2.0",
+    "pytesseract>=0.3.13",
+    "pillow>=12.2.0",
+    "pdf2image>=1.17.0",
+    # Embeddings: fastembed (ONNX Runtime, no torch)
+    # On Intel Mac + Python 3.13 uv can't resolve the wheel directly — install manually:
+    #   uv pip install "onnxruntime==1.23.2" --python-platform x86_64-apple-darwin
+    #   uv pip install "fastembed>=0.7.0"    --python-platform x86_64-apple-darwin
+    # In CI / ARM Mac / Linux: uv add "fastembed>=0.7.0" works without the override.
 ]
 
 # -----------------------------------------------------------

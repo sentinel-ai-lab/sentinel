@@ -4,7 +4,7 @@ Sentinel — Database Models (SQLAlchemy 2.0 style)
 All tables live in the `sentinel` schema inside `defaultdb` (Aiven free tier).
 
 Phase 1 tables:  companies, filings, raw_documents
-Phase 2 stubs:   chunks, embeddings (vectors added when pgvector extension is enabled)
+Phase 2 tables:  chunks, embeddings (requires pgvector extension in the DB)
 """
 
 from __future__ import annotations
@@ -12,11 +12,14 @@ from __future__ import annotations
 import enum
 from datetime import datetime
 
+from pgvector.sqlalchemy import Vector
 from sqlalchemy import (
     BigInteger,
+    Boolean,
     DateTime,
     Enum,
     ForeignKey,
+    Index,
     Integer,
     MetaData,
     String,
@@ -82,7 +85,6 @@ class Filing(Base):
     filing_type: Mapped[str] = mapped_column(Enum(FilingType, schema=SCHEMA), nullable=False)
     fiscal_year: Mapped[str] = mapped_column(String(10), nullable=False)  # e.g. "2024-25"
     pdf_url: Mapped[str] = mapped_column(Text, nullable=False)
-    source: Mapped[str | None] = mapped_column(String(10))               # "NSE" or "BSE"
     ingested_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
@@ -98,12 +100,73 @@ class RawDocument(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     filing_id: Mapped[int] = mapped_column(ForeignKey(f"{SCHEMA}.filings.id"), unique=True, nullable=False)
-    raw_text: Mapped[str] = mapped_column(Text, nullable=False)
+    raw_text: Mapped[str | None] = mapped_column(Text)
     page_count: Mapped[int | None] = mapped_column(Integer)
     file_size_bytes: Mapped[int | None] = mapped_column(BigInteger)
+    is_scanned: Mapped[bool] = mapped_column(Boolean, default=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     filing: Mapped[Filing] = relationship("Filing", back_populates="raw_document")
+    chunks: Mapped[list["Chunk"]] = relationship("Chunk", back_populates="raw_document")
 
     def __repr__(self) -> str:
         return f"<RawDocument filing_id={self.filing_id} pages={self.page_count}>"
+
+
+# ── Phase 2 tables ────────────────────────────────────────────────────────────
+
+EMBEDDING_DIM = 384  # BAAI/bge-small-en-v1.5
+
+
+class Chunk(Base):
+    __tablename__ = "chunks"
+    __table_args__ = (
+        Index("ix_sentinel_chunks_raw_document_id", "raw_document_id"),
+        {"schema": SCHEMA},
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    raw_document_id: Mapped[int] = mapped_column(
+        ForeignKey(f"{SCHEMA}.raw_documents.id"), nullable=False
+    )
+    chunk_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    text: Mapped[str] = mapped_column(Text, nullable=False)
+    page_number: Mapped[int | None] = mapped_column(Integer)
+    # Denormalized for query performance — avoids joins when filtering by company/year
+    company: Mapped[str | None] = mapped_column(String(20))
+    filing_type: Mapped[str | None] = mapped_column(String(50))
+    fiscal_year: Mapped[str | None] = mapped_column(String(10))
+    is_table: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    char_count: Mapped[int | None] = mapped_column(Integer)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+    raw_document: Mapped[RawDocument] = relationship("RawDocument", back_populates="chunks")
+    embedding: Mapped["Embedding | None"] = relationship(
+        "Embedding", back_populates="chunk", uselist=False
+    )
+
+    def __repr__(self) -> str:
+        return f"<Chunk raw_doc={self.raw_document_id} idx={self.chunk_index}>"
+
+
+class Embedding(Base):
+    __tablename__ = "embeddings"
+    __table_args__ = {"schema": SCHEMA}
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    chunk_id: Mapped[int] = mapped_column(
+        ForeignKey(f"{SCHEMA}.chunks.id"), unique=True, nullable=False
+    )
+    model_name: Mapped[str] = mapped_column(String(100), nullable=False)
+    # Column is named `vector` in the live DB (matches existing data)
+    vector: Mapped[list[float]] = mapped_column(Vector(EMBEDDING_DIM), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+    chunk: Mapped[Chunk] = relationship("Chunk", back_populates="embedding")
+
+    def __repr__(self) -> str:
+        return f"<Embedding chunk_id={self.chunk_id} model={self.model_name}>"
