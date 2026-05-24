@@ -43,8 +43,7 @@ def chunk_document(doc: ParsedDocument) -> list[TextChunk]:
 
     # Precompute (char_offset, page_number) pairs from [PAGE N] markers.
     page_positions: list[tuple[int, int]] = [
-        (m.start(), int(m.group(1)))
-        for m in re.finditer(r"\[PAGE (\d+)\]", raw)
+        (m.start(), int(m.group(1))) for m in re.finditer(r"\[PAGE (\d+)\]", raw)
     ]
 
     def _page_at(pos: int) -> int:
