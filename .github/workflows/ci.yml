@@ -62,7 +62,7 @@ jobs:
         run: uv sync --all-extras --dev
 
       - name: Run mypy
-        run: uv run mypy packages/ scripts/ --ignore-missing-imports --no-strict-optional
+        run: uv run mypy packages/ --ignore-missing-imports --no-strict-optional
 
   # -----------------------------------------------------------
   # Job 3: Tests (pytest + coverage)

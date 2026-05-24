@@ -12,7 +12,7 @@ Phase 2 (next): chunking, embedding, vector storage.
 from __future__ import annotations
 
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -92,13 +92,12 @@ def ingest(
         company_info = lookup_company(ticker)
     except ValueError as exc:
         typer.echo(f"  ERROR: {exc}", err=True)
-        raise typer.Exit(1)
+        raise typer.Exit(1) from exc
     typer.echo(f"  Name    : {company_info.name}")
     typer.echo(f"  BSE     : {company_info.bse_code}")
     typer.echo(f"  NSE sym : {company_info.nse_symbol}")
 
     with httpx.Client(follow_redirects=True) as client:
-
         # ── 2. Fetch PDF URL ─────────────────────────────────────────────
         typer.echo("\n[2/5] Fetching annual report URL from NSE...")
         init_nse_session(client)
@@ -106,7 +105,7 @@ def ingest(
             pdf_url = fetch_annual_report_url(ticker, client)
         except Exception as exc:
             typer.echo(f"  ERROR: {exc}", err=True)
-            raise typer.Exit(1)
+            raise typer.Exit(1) from exc
         typer.echo(f"  URL: {pdf_url}")
 
         # ── 3. Download PDF ──────────────────────────────────────────────
@@ -115,7 +114,7 @@ def ingest(
             pdf_bytes = download_pdf(pdf_url, client)
         except Exception as exc:
             typer.echo(f"  ERROR: {exc}", err=True)
-            raise typer.Exit(1)
+            raise typer.Exit(1) from exc
         typer.echo(f"  Size: {len(pdf_bytes) / 1_048_576:.1f} MB")
 
     # ── 4. Parse PDF ─────────────────────────────────────────────────────
@@ -124,7 +123,7 @@ def ingest(
         parsed = parse_pdf(pdf_bytes)
     except Exception as exc:
         typer.echo(f"  ERROR: {exc}", err=True)
-        raise typer.Exit(1)
+        raise typer.Exit(1) from exc
     typer.echo(f"  Pages          : {parsed.page_count}")
     typer.echo(f"  Characters     : {len(parsed.raw_text):,}")
     typer.echo(f"  Scanned pages  : {parsed.scanned_page_count}")
@@ -153,7 +152,7 @@ def ingest(
             filing_type=FilingType.annual_report,
             fiscal_year=fiscal_year,
             pdf_url=pdf_url,
-            ingested_at=datetime.now(timezone.utc),
+            ingested_at=datetime.now(UTC),
         )
         session.add(filing)
         session.flush()

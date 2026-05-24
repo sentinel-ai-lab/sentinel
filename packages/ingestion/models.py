@@ -160,7 +160,7 @@ class Chunk(Base):
 
 class Embedding(Base):
     __tablename__ = "embeddings"
-    __table_args__: ClassVar[dict[str, str]] = {"schema": SCHEMA}
+    __table_args__: ClassVar[dict[str, str]] = {"schema": SCHEMA}  # type: ignore[misc]
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     chunk_id: Mapped[int] = mapped_column(

@@ -16,43 +16,42 @@ Run:
     python scripts/fetch_annual_report_urls.py --source bse   # BSE only
 """
 
-import time
-import json
 import argparse
-from typing import Optional
+import json
+import time
 
 import httpx
 
 # ── Target companies ──────────────────────────────────────────────────────────
 
 COMPANIES = [
-    {"name": "TCS",                  "bse": "532540", "nse": "TCS"},
-    {"name": "Infosys",              "bse": "500209", "nse": "INFY"},
-    {"name": "HDFC Bank",            "bse": "500180", "nse": "HDFCBANK"},
-    {"name": "Reliance Industries",  "bse": "500325", "nse": "RELIANCE"},
-    {"name": "ICICI Bank",           "bse": "532174", "nse": "ICICIBANK"},
-    {"name": "Wipro",                "bse": "507685", "nse": "WIPRO"},
-    {"name": "HCL Technologies",     "bse": "532281", "nse": "HCLTECH"},
-    {"name": "Kotak Mahindra Bank",  "bse": "500247", "nse": "KOTAKBANK"},
-    {"name": "Bajaj Finance",        "bse": "500034", "nse": "BAJFINANCE"},
-    {"name": "Asian Paints",         "bse": "500820", "nse": "ASIANPAINT"},
-    {"name": "Maruti Suzuki",        "bse": "532500", "nse": "MARUTI"},
-    {"name": "Sun Pharma",           "bse": "524715", "nse": "SUNPHARMA"},
-    {"name": "Titan Company",        "bse": "500114", "nse": "TITAN"},
-    {"name": "Larsen & Toubro",      "bse": "500510", "nse": "LT"},
-    {"name": "UltraTech Cement",     "bse": "532538", "nse": "ULTRACEMCO"},
-    {"name": "Nestle India",         "bse": "500790", "nse": "NESTLEIND"},
-    {"name": "Power Grid Corp",      "bse": "532898", "nse": "POWERGRID"},
-    {"name": "NTPC",                 "bse": "532555", "nse": "NTPC"},
-    {"name": "ITC",                  "bse": "500875", "nse": "ITC"},
-    {"name": "Axis Bank",            "bse": "532215", "nse": "AXISBANK"},
+    {"name": "TCS", "bse": "532540", "nse": "TCS"},
+    {"name": "Infosys", "bse": "500209", "nse": "INFY"},
+    {"name": "HDFC Bank", "bse": "500180", "nse": "HDFCBANK"},
+    {"name": "Reliance Industries", "bse": "500325", "nse": "RELIANCE"},
+    {"name": "ICICI Bank", "bse": "532174", "nse": "ICICIBANK"},
+    {"name": "Wipro", "bse": "507685", "nse": "WIPRO"},
+    {"name": "HCL Technologies", "bse": "532281", "nse": "HCLTECH"},
+    {"name": "Kotak Mahindra Bank", "bse": "500247", "nse": "KOTAKBANK"},
+    {"name": "Bajaj Finance", "bse": "500034", "nse": "BAJFINANCE"},
+    {"name": "Asian Paints", "bse": "500820", "nse": "ASIANPAINT"},
+    {"name": "Maruti Suzuki", "bse": "532500", "nse": "MARUTI"},
+    {"name": "Sun Pharma", "bse": "524715", "nse": "SUNPHARMA"},
+    {"name": "Titan Company", "bse": "500114", "nse": "TITAN"},
+    {"name": "Larsen & Toubro", "bse": "500510", "nse": "LT"},
+    {"name": "UltraTech Cement", "bse": "532538", "nse": "ULTRACEMCO"},
+    {"name": "Nestle India", "bse": "500790", "nse": "NESTLEIND"},
+    {"name": "Power Grid Corp", "bse": "532898", "nse": "POWERGRID"},
+    {"name": "NTPC", "bse": "532555", "nse": "NTPC"},
+    {"name": "ITC", "bse": "500875", "nse": "ITC"},
+    {"name": "Axis Bank", "bse": "532215", "nse": "AXISBANK"},
 ]
 
 # ── URL templates ─────────────────────────────────────────────────────────────
 
-NSE_HOME    = "https://www.nseindia.com"
-NSE_API     = "https://www.nseindia.com/api/annual-reports?index=equities&symbol={symbol}"
-BSE_API     = "https://api.bseindia.com/BseIndiaAPI/api/AnnualReport/w?scripcode={code}"
+NSE_HOME = "https://www.nseindia.com"
+NSE_API = "https://www.nseindia.com/api/annual-reports?index=equities&symbol={symbol}"
+BSE_API = "https://api.bseindia.com/BseIndiaAPI/api/AnnualReport/w?scripcode={code}"
 BSE_PDF_BASE = "https://www.bseindia.com/xml-data/corpfiling/AttachHis/"
 
 # NSE blocks requests without a real browser User-Agent + Referer.
@@ -62,14 +61,15 @@ BROWSER_HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/124.0.0.0 Safari/537.36"
     ),
-    "Accept":          "application/json, text/plain, */*",
+    "Accept": "application/json, text/plain, */*",
     "Accept-Language": "en-US,en;q=0.9",
     "Accept-Encoding": "gzip, deflate, br",
-    "Connection":      "keep-alive",
+    "Connection": "keep-alive",
 }
 
 
 # ── NSE helpers ───────────────────────────────────────────────────────────────
+
 
 def init_nse_session(client: httpx.Client) -> bool:
     """
@@ -83,8 +83,7 @@ def init_nse_session(client: httpx.Client) -> bool:
             headers={**BROWSER_HEADERS, "Accept": "text/html,application/xhtml+xml"},
             timeout=15,
         )
-        print(f"  NSE session init: HTTP {resp.status_code}, "
-              f"cookies: {list(resp.cookies.keys())}")
+        print(f"  NSE session init: HTTP {resp.status_code}, cookies: {list(resp.cookies.keys())}")
         return resp.status_code == 200
     except Exception as exc:
         print(f"  NSE session init failed: {exc}")
@@ -119,6 +118,7 @@ def fetch_nse_reports(client: httpx.Client, symbol: str) -> list[dict]:
 
 # ── BSE helpers ───────────────────────────────────────────────────────────────
 
+
 def fetch_bse_reports(code: str) -> list[dict]:
     """
     Call the BSE annual-reports API. Uses a fresh client (no session needed
@@ -150,11 +150,13 @@ def bse_pdf_url(filename: str) -> str:
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Fetch annual report URLs")
     parser.add_argument("--source", choices=["nse", "bse", "both"], default="both")
-    parser.add_argument("--dry-run", action="store_true",
-                        help="Print company list without fetching")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print company list without fetching"
+    )
     args = parser.parse_args()
 
     if args.dry_run:
@@ -166,7 +168,6 @@ def main() -> None:
 
     # One persistent httpx.Client for NSE (keeps the session cookies alive)
     with httpx.Client(follow_redirects=True) as nse_client:
-
         if args.source in ("nse", "both"):
             print("── Step 1: Initialize NSE session ──")
             init_nse_session(nse_client)
@@ -175,7 +176,7 @@ def main() -> None:
         for company in COMPANIES:
             name = company["name"]
             print(f"\n[{name}]")
-            pdf_url: Optional[str] = None
+            pdf_url: str | None = None
             year: str = "—"
             source_used = "—"
 
@@ -186,15 +187,13 @@ def main() -> None:
                     latest = reports[0]
                     # NSE field names vary; try common keys
                     pdf_url = (
-                        latest.get("pdfLink")
-                        or latest.get("fileName")
-                        or latest.get("attachment")
+                        latest.get("pdfLink") or latest.get("fileName") or latest.get("attachment")
                     )
                     year = latest.get("year") or latest.get("finYear", "—")
                     source_used = "NSE"
                     print(f"  ✓ NSE: {year} → {str(pdf_url)[:80]}")
                 else:
-                    print(f"  ✗ NSE: no data")
+                    print("  ✗ NSE: no data")
 
             # ── Try BSE if NSE failed ──
             if pdf_url is None and args.source in ("bse", "both"):
@@ -214,21 +213,23 @@ def main() -> None:
                         source_used = "BSE"
                         print(f"  ✓ BSE URL: {pdf_url}")
                     else:
-                        print(f"  ✗ BSE: unexpected shape — inspect raw above")
+                        print("  ✗ BSE: unexpected shape — inspect raw above")
                 else:
-                    print(f"  ✗ BSE: no data")
+                    print("  ✗ BSE: no data")
 
             if pdf_url is None:
                 pdf_url = "MANUAL_LOOKUP_NEEDED"
 
-            results.append({
-                "name":   name,
-                "bse":    company["bse"],
-                "nse":    company["nse"],
-                "year":   year,
-                "url":    pdf_url,
-                "source": source_used,
-            })
+            results.append(
+                {
+                    "name": name,
+                    "bse": company["bse"],
+                    "nse": company["nse"],
+                    "year": year,
+                    "url": pdf_url,
+                    "source": source_used,
+                }
+            )
 
             time.sleep(1)  # 1 req/sec — be polite to the APIs
 

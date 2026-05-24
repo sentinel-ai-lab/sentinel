@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -43,9 +43,9 @@ MODEL_NAME = "BAAI/bge-small-en-v1.5"
 BATCH_SIZE = 32
 
 TARGETS: dict[str, str] = {
-    "AXISBANK":   "https://nsearchives.nseindia.com/annual_reports/AR_26622_AXISBANK_2024_2025_A_27062025104637.pdf",
-    "ITC":        "https://nsearchives.nseindia.com/annual_reports/AR_26624_ITC_2024_2025_A_27062025150548.pdf",
-    "POWERGRID":  "https://nsearchives.nseindia.com/annual_reports/AR_27256_POWERGRID_2024_2025_A_03082025200555.pdf",
+    "AXISBANK": "https://nsearchives.nseindia.com/annual_reports/AR_26622_AXISBANK_2024_2025_A_27062025104637.pdf",
+    "ITC": "https://nsearchives.nseindia.com/annual_reports/AR_26624_ITC_2024_2025_A_27062025150548.pdf",
+    "POWERGRID": "https://nsearchives.nseindia.com/annual_reports/AR_27256_POWERGRID_2024_2025_A_03082025200555.pdf",
     # BAJFINANCE — corrupt PDF, intentionally skipped
     # KOTAKBANK  — no direct URL, intentionally skipped
 }
@@ -68,20 +68,23 @@ def upsert_company(session: Session, ticker: str) -> Company:
 
 
 def filing_exists(session: Session, company_id: int) -> bool:
-    return session.scalar(
-        select(Filing).where(
-            Filing.company_id == company_id,
-            Filing.fiscal_year == FISCAL_YEAR,
-            Filing.filing_type == FilingType.annual_report,
+    return (
+        session.scalar(
+            select(Filing).where(
+                Filing.company_id == company_id,
+                Filing.fiscal_year == FISCAL_YEAR,
+                Filing.filing_type == FilingType.annual_report,
+            )
         )
-    ) is not None
+        is not None
+    )
 
 
 def main() -> None:
     pdf_dir = Path("tmp/fy2025")
     engine = get_engine()
 
-    print(f"\n=== Sentinel FY2025 — Missing Companies Ingestion ===\n")
+    print("\n=== Sentinel FY2025 — Missing Companies Ingestion ===\n")
     print(f"Targets: {', '.join(TARGETS)}\n")
 
     print("Pre-loading embedding model...")
@@ -128,7 +131,7 @@ def main() -> None:
                     filing_type=FilingType.annual_report,
                     fiscal_year=FISCAL_YEAR,
                     pdf_url=pdf_url,
-                    ingested_at=datetime.now(timezone.utc),
+                    ingested_at=datetime.now(UTC),
                 )
                 session.add(filing)
                 session.flush()
@@ -163,7 +166,7 @@ def main() -> None:
                 filing_type=FilingType.annual_report,
                 fiscal_year=FISCAL_YEAR,
                 pdf_url=pdf_url,
-                ingested_at=datetime.now(timezone.utc),
+                ingested_at=datetime.now(UTC),
             )
             session.add(filing)
             session.flush()
@@ -195,7 +198,7 @@ def main() -> None:
                 chunk_rows.append(chunk_row)
             session.flush()
 
-            for chunk_row, vec in zip(chunk_rows, embeddings):
+            for chunk_row, vec in zip(chunk_rows, embeddings, strict=False):
                 session.add(
                     Embedding(
                         chunk_id=chunk_row.id,
@@ -225,16 +228,23 @@ def main() -> None:
     # ── Final corpus counts ───────────────────────────────────────────────────
     print("\n=== Final Corpus State ===")
     from sqlalchemy import text as sqlt
+
     with engine.connect() as conn:
-        rows = conn.execute(sqlt(
-            "SELECT fiscal_year, COUNT(*) FROM sentinel.filings GROUP BY fiscal_year ORDER BY fiscal_year"
-        )).fetchall()
+        rows = conn.execute(
+            sqlt(
+                "SELECT fiscal_year, COUNT(*) FROM sentinel.filings "
+                "GROUP BY fiscal_year ORDER BY fiscal_year"
+            )
+        ).fetchall()
         for fy, cnt in rows:
             print(f"  sentinel.filings  fiscal_year={fy!r:12}  count={cnt}")
 
-        rows = conn.execute(sqlt(
-            "SELECT fiscal_year, COUNT(*) FROM sentinel.chunks GROUP BY fiscal_year ORDER BY fiscal_year"
-        )).fetchall()
+        rows = conn.execute(
+            sqlt(
+                "SELECT fiscal_year, COUNT(*) FROM sentinel.chunks "
+                "GROUP BY fiscal_year ORDER BY fiscal_year"
+            )
+        ).fetchall()
         for fy, cnt in rows:
             print(f"  sentinel.chunks   fiscal_year={fy!r:12}  count={cnt}")
 
