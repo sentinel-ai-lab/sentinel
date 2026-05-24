@@ -10,11 +10,12 @@ Key wiring:
 from __future__ import annotations
 
 import sys
-from pathlib import Path
 from logging.config import fileConfig
+from pathlib import Path
+
+from sqlalchemy import engine_from_config, pool
 
 from alembic import context
-from sqlalchemy import engine_from_config, pool
 
 # Make project root importable
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -36,7 +37,10 @@ target_metadata = Base.metadata
 
 
 def include_object(obj: object, name: str, type_: str, reflected: bool, compare_to: object) -> bool:
-    """Only manage objects that belong to the sentinel schema — ignore everything else in defaultdb."""
+    """Only manage objects in the sentinel schema.
+
+    Ignores all other objects in defaultdb (Aiven shared tables, etc.).
+    """
     if type_ == "table":
         return getattr(obj, "schema", None) == "sentinel"
     return True

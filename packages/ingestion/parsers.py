@@ -24,13 +24,13 @@ import fitz  # pymupdf
 
 logger = logging.getLogger(__name__)
 
-_MIN_CHARS_PER_PAGE = 20   # below this → page is probably a scanned image
-_MIN_TOTAL_CHARS    = 100  # below this for the whole doc → try OCR fallback
+_MIN_CHARS_PER_PAGE = 20  # below this → page is probably a scanned image
+_MIN_TOTAL_CHARS = 100  # below this for the whole doc → try OCR fallback
 
 
 @dataclass
 class PageText:
-    page_number: int   # 1-indexed
+    page_number: int  # 1-indexed
     text: str
 
 
@@ -100,8 +100,8 @@ def parse_pdf(pdf_bytes: bytes) -> ParsedDocument:
     )
 
     try:
-        from pdf2image import convert_from_bytes
         import pytesseract
+        from pdf2image import convert_from_bytes
     except ImportError:
         logger.warning("pytesseract / pdf2image not installed — returning empty document")
         return ParsedDocument(

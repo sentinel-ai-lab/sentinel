@@ -17,33 +17,33 @@ import time
 from dataclasses import dataclass
 
 import httpx
-from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
+from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 # ── Company registry ──────────────────────────────────────────────────────────
 # Single source of truth for ticker → BSE code + NSE symbol mapping.
 # Mirrors the 20 companies in docs/data-sources.md.
 
 _REGISTRY: dict[str, dict[str, str]] = {
-    "TCS":        {"name": "Tata Consultancy Services", "bse": "532540", "nse": "TCS"},
-    "INFY":       {"name": "Infosys",                   "bse": "500209", "nse": "INFY"},
-    "HDFCBANK":   {"name": "HDFC Bank",                 "bse": "500180", "nse": "HDFCBANK"},
-    "RELIANCE":   {"name": "Reliance Industries",       "bse": "500325", "nse": "RELIANCE"},
-    "ICICIBANK":  {"name": "ICICI Bank",                "bse": "532174", "nse": "ICICIBANK"},
-    "WIPRO":      {"name": "Wipro",                     "bse": "507685", "nse": "WIPRO"},
-    "HCLTECH":    {"name": "HCL Technologies",          "bse": "532281", "nse": "HCLTECH"},
-    "KOTAKBANK":  {"name": "Kotak Mahindra Bank",       "bse": "500247", "nse": "KOTAKBANK"},
-    "BAJFINANCE": {"name": "Bajaj Finance",             "bse": "500034", "nse": "BAJFINANCE"},
-    "ASIANPAINT": {"name": "Asian Paints",              "bse": "500820", "nse": "ASIANPAINT"},
-    "MARUTI":     {"name": "Maruti Suzuki",             "bse": "532500", "nse": "MARUTI"},
-    "SUNPHARMA":  {"name": "Sun Pharma",                "bse": "524715", "nse": "SUNPHARMA"},
-    "TITAN":      {"name": "Titan Company",             "bse": "500114", "nse": "TITAN"},
-    "LT":         {"name": "Larsen & Toubro",           "bse": "500510", "nse": "LT"},
-    "ULTRACEMCO": {"name": "UltraTech Cement",          "bse": "532538", "nse": "ULTRACEMCO"},
-    "NESTLEIND":  {"name": "Nestle India",              "bse": "500790", "nse": "NESTLEIND"},
-    "POWERGRID":  {"name": "Power Grid Corp",           "bse": "532898", "nse": "POWERGRID"},
-    "NTPC":       {"name": "NTPC",                      "bse": "532555", "nse": "NTPC"},
-    "ITC":        {"name": "ITC",                       "bse": "500875", "nse": "ITC"},
-    "AXISBANK":   {"name": "Axis Bank",                 "bse": "532215", "nse": "AXISBANK"},
+    "TCS": {"name": "Tata Consultancy Services", "bse": "532540", "nse": "TCS"},
+    "INFY": {"name": "Infosys", "bse": "500209", "nse": "INFY"},
+    "HDFCBANK": {"name": "HDFC Bank", "bse": "500180", "nse": "HDFCBANK"},
+    "RELIANCE": {"name": "Reliance Industries", "bse": "500325", "nse": "RELIANCE"},
+    "ICICIBANK": {"name": "ICICI Bank", "bse": "532174", "nse": "ICICIBANK"},
+    "WIPRO": {"name": "Wipro", "bse": "507685", "nse": "WIPRO"},
+    "HCLTECH": {"name": "HCL Technologies", "bse": "532281", "nse": "HCLTECH"},
+    "KOTAKBANK": {"name": "Kotak Mahindra Bank", "bse": "500247", "nse": "KOTAKBANK"},
+    "BAJFINANCE": {"name": "Bajaj Finance", "bse": "500034", "nse": "BAJFINANCE"},
+    "ASIANPAINT": {"name": "Asian Paints", "bse": "500820", "nse": "ASIANPAINT"},
+    "MARUTI": {"name": "Maruti Suzuki", "bse": "532500", "nse": "MARUTI"},
+    "SUNPHARMA": {"name": "Sun Pharma", "bse": "524715", "nse": "SUNPHARMA"},
+    "TITAN": {"name": "Titan Company", "bse": "500114", "nse": "TITAN"},
+    "LT": {"name": "Larsen & Toubro", "bse": "500510", "nse": "LT"},
+    "ULTRACEMCO": {"name": "UltraTech Cement", "bse": "532538", "nse": "ULTRACEMCO"},
+    "NESTLEIND": {"name": "Nestle India", "bse": "500790", "nse": "NESTLEIND"},
+    "POWERGRID": {"name": "Power Grid Corp", "bse": "532898", "nse": "POWERGRID"},
+    "NTPC": {"name": "NTPC", "bse": "532555", "nse": "NTPC"},
+    "ITC": {"name": "ITC", "bse": "500875", "nse": "ITC"},
+    "AXISBANK": {"name": "Axis Bank", "bse": "532215", "nse": "AXISBANK"},
 }
 
 
@@ -68,14 +68,15 @@ _BROWSER_HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/124.0.0.0 Safari/537.36"
     ),
-    "Accept":          "application/json, text/plain, */*",
+    "Accept": "application/json, text/plain, */*",
     "Accept-Language": "en-US,en;q=0.9",
     "Accept-Encoding": "gzip, deflate",  # omit brotli — httpx needs extra dep for br
-    "Connection":      "keep-alive",
+    "Connection": "keep-alive",
 }
 
 
 # ── Public API ────────────────────────────────────────────────────────────────
+
 
 def lookup_company(ticker: str) -> CompanyInfo:
     """
@@ -135,15 +136,9 @@ def fetch_annual_report_url(ticker: str, client: httpx.Client) -> str:
         raise RuntimeError(f"NSE returned no annual reports for '{ticker}'")
 
     latest = reports[0]
-    pdf_url = (
-        latest.get("pdfLink")
-        or latest.get("fileName")
-        or latest.get("attachment")
-    )
+    pdf_url = latest.get("pdfLink") or latest.get("fileName") or latest.get("attachment")
     if not pdf_url:
-        raise RuntimeError(
-            f"Could not extract PDF URL from NSE response for '{ticker}': {latest}"
-        )
+        raise RuntimeError(f"Could not extract PDF URL from NSE response for '{ticker}': {latest}")
 
     return str(pdf_url)
 
@@ -171,8 +166,6 @@ def download_pdf(url: str, client: httpx.Client) -> bytes:
 
     content_type = resp.headers.get("content-type", "")
     if "pdf" not in content_type and not url.endswith(".pdf"):
-        raise RuntimeError(
-            f"Expected a PDF but got content-type '{content_type}' from {url}"
-        )
+        raise RuntimeError(f"Expected a PDF but got content-type '{content_type}' from {url}")
 
     return resp.content

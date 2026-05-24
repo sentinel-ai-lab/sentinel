@@ -25,13 +25,14 @@ MODEL_NAME = "BAAI/bge-small-en-v1.5"
 EMBEDDING_DIM = 384
 BATCH_SIZE = 32
 
-_model: "TextEmbedding | None" = None
+_model: TextEmbedding | None = None
 
 
-def _get_model() -> "TextEmbedding":
+def _get_model() -> TextEmbedding:
     global _model
     if _model is None:
         from fastembed import TextEmbedding
+
         _model = TextEmbedding(model_name=MODEL_NAME)
     return _model
 
