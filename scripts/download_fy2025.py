@@ -38,25 +38,25 @@ _HEADERS = {
 }
 
 URLS: dict[str, str] = {
-    "TCS":        "https://nsearchives.nseindia.com/annual_reports/AR_26456_TCS_2024_2025_A_27052025233502.pdf",
-    "INFY":       "https://nsearchives.nseindia.com/annual_reports/AR_26481_INFY_2024_2025_A_02062025153945.pdf",
-    "HDFCBANK":   "https://nsearchives.nseindia.com/annual_reports/AR_27115_HDFCBANK_2024_2025_U_25072025220054.pdf",
-    "RELIANCE":   "https://nsearchives.nseindia.com/annual_reports/AR_27322_RELIANCE_2024_2025_A_07082025114457.pdf",
-    "ICICIBANK":  "https://nsearchives.nseindia.com/annual_reports/AR_27289_ICICIBANK_2024_2025_A_05082025201317.pdf",
-    "WIPRO":      "https://nsearchives.nseindia.com/annual_reports/AR_26582_WIPRO_2024_2025_A_21062025124943.pdf",
-    "HCLTECH":    "https://nsearchives.nseindia.com/annual_reports/AR_27254_HCLTECH_2024_2025_A_02082025194851.pdf",
+    "TCS": "https://nsearchives.nseindia.com/annual_reports/AR_26456_TCS_2024_2025_A_27052025233502.pdf",
+    "INFY": "https://nsearchives.nseindia.com/annual_reports/AR_26481_INFY_2024_2025_A_02062025153945.pdf",
+    "HDFCBANK": "https://nsearchives.nseindia.com/annual_reports/AR_27115_HDFCBANK_2024_2025_U_25072025220054.pdf",
+    "RELIANCE": "https://nsearchives.nseindia.com/annual_reports/AR_27322_RELIANCE_2024_2025_A_07082025114457.pdf",
+    "ICICIBANK": "https://nsearchives.nseindia.com/annual_reports/AR_27289_ICICIBANK_2024_2025_A_05082025201317.pdf",
+    "WIPRO": "https://nsearchives.nseindia.com/annual_reports/AR_26582_WIPRO_2024_2025_A_21062025124943.pdf",
+    "HCLTECH": "https://nsearchives.nseindia.com/annual_reports/AR_27254_HCLTECH_2024_2025_A_02082025194851.pdf",
     "BAJFINANCE": "https://nsearchives.nseindia.com/annual_reports/AR_26674_BAJFINANCE_2024_2025_A_02072025000055.pdf",
     "ASIANPAINT": "https://nsearchives.nseindia.com/annual_reports/AR_26496_ASIANPAINT_2024_2025_A_03062025224818.pdf",
-    "MARUTI":     "https://nsearchives.nseindia.com/annual_reports/AR_27293_MARUTI_2024_2025_A_05082025210558.pdf",
-    "SUNPHARMA":  "https://nsearchives.nseindia.com/annual_reports/AR_26732_SUNPHARMA_2024_2025_A_04072025175058.pdf",
-    "TITAN":      "https://nsearchives.nseindia.com/annual_reports/AR_26625_TITAN_2024_2025_A_27062025152121.pdf",
-    "LT":         "https://nsearchives.nseindia.com/annual_reports/AR_26451_LT_2024_2025_A_26052025131455.pdf",
+    "MARUTI": "https://nsearchives.nseindia.com/annual_reports/AR_27293_MARUTI_2024_2025_A_05082025210558.pdf",
+    "SUNPHARMA": "https://nsearchives.nseindia.com/annual_reports/AR_26732_SUNPHARMA_2024_2025_A_04072025175058.pdf",
+    "TITAN": "https://nsearchives.nseindia.com/annual_reports/AR_26625_TITAN_2024_2025_A_27062025152121.pdf",
+    "LT": "https://nsearchives.nseindia.com/annual_reports/AR_26451_LT_2024_2025_A_26052025131455.pdf",
     "ULTRACEMCO": "http://nsearchives.nseindia.com/annual_reports/AR_27126_ULTRACEMCO_2024_2025_A_28072025142546.pdf",
-    "NESTLEIND":  "https://nsearchives.nseindia.com/annual_reports/AR_26487_NESTLEIND_2024_2025_A_03062025002440.pdf",
-    "POWERGRID":  "https://nsearchives.nseindia.com/annual_reports/AR_27256_POWERGRID_2024_2025_A_03082025200555.pdf",
-    "NTPC":       "https://nsearchives.nseindia.com/annual_reports/AR_27336_NTPC_2024_2025_A_07082025183440.pdf",
-    "ITC":        "https://nsearchives.nseindia.com/annual_reports/AR_26624_ITC_2024_2025_A_27062025150548.pdf",
-    "AXISBANK":   "https://nsearchives.nseindia.com/annual_reports/AR_26622_AXISBANK_2024_2025_A_27062025104637.pdf",
+    "NESTLEIND": "https://nsearchives.nseindia.com/annual_reports/AR_26487_NESTLEIND_2024_2025_A_03062025002440.pdf",
+    "POWERGRID": "https://nsearchives.nseindia.com/annual_reports/AR_27256_POWERGRID_2024_2025_A_03082025200555.pdf",
+    "NTPC": "https://nsearchives.nseindia.com/annual_reports/AR_27336_NTPC_2024_2025_A_07082025183440.pdf",
+    "ITC": "https://nsearchives.nseindia.com/annual_reports/AR_26624_ITC_2024_2025_A_27062025150548.pdf",
+    "AXISBANK": "https://nsearchives.nseindia.com/annual_reports/AR_26622_AXISBANK_2024_2025_A_27062025104637.pdf",
     # KOTAKBANK: no direct URL available yet — will be added manually
 }
 
@@ -69,9 +69,7 @@ def _download_one(client: httpx.Client, ticker: str, url: str, dest: Path) -> bo
             resp.raise_for_status()
             content_type = resp.headers.get("content-type", "")
             if "pdf" not in content_type and not url.lower().endswith(".pdf"):
-                typer.echo(
-                    f"  ERROR {ticker}: unexpected content-type '{content_type}'", err=True
-                )
+                typer.echo(f"  ERROR {ticker}: unexpected content-type '{content_type}'", err=True)
                 return False
             dest.write_bytes(resp.content)
             typer.echo(f"  OK  {ticker}: {len(resp.content) / 1_048_576:.1f} MB → {dest.name}")

@@ -118,11 +118,12 @@ def main(tickers: list[str] = typer.Argument(default=None)) -> None:
                         WHERE id = :doc_id
                     """),
                     {
-                        "raw_text":        parsed.raw_text,
-                        "page_count":      parsed.page_count,
+                        "raw_text": parsed.raw_text,
+                        "page_count": parsed.page_count,
                         "file_size_bytes": parsed.file_size_bytes,
-                        "is_scanned":      parsed.is_scanned,
-                    } | {"doc_id": doc_id},
+                        "is_scanned": parsed.is_scanned,
+                    }
+                    | {"doc_id": doc_id},
                 )
             typer.echo(f"  ✅ Updated raw_document id={doc_id}\n")
 

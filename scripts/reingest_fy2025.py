@@ -24,7 +24,7 @@ from __future__ import annotations
 
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -36,7 +36,7 @@ from sqlalchemy.orm import Session
 from packages.common.config import get_settings
 from packages.ingestion.chunker import chunk_document
 from packages.ingestion.embedder import embed_texts
-from packages.ingestion.fetchers import _REGISTRY, CompanyInfo, lookup_company
+from packages.ingestion.fetchers import _REGISTRY
 from packages.ingestion.models import (
     Chunk,
     Company,
@@ -50,30 +50,30 @@ from packages.ingestion.parsers import parse_pdf
 app = typer.Typer(name="reingest-fy2025", add_completion=False)
 
 FISCAL_YEAR = "2024-25"
-FISCAL_YEAR_TAG = "FY25"   # denormalized tag stored in chunks.fiscal_year
+FISCAL_YEAR_TAG = "FY25"  # denormalized tag stored in chunks.fiscal_year
 MODEL_NAME = "BAAI/bge-small-en-v1.5"
 
 # URL mapping — same as download_fy2025.py
 URLS: dict[str, str] = {
-    "TCS":        "https://nsearchives.nseindia.com/annual_reports/AR_26456_TCS_2024_2025_A_27052025233502.pdf",
-    "INFY":       "https://nsearchives.nseindia.com/annual_reports/AR_26481_INFY_2024_2025_A_02062025153945.pdf",
-    "HDFCBANK":   "https://nsearchives.nseindia.com/annual_reports/AR_27115_HDFCBANK_2024_2025_U_25072025220054.pdf",
-    "RELIANCE":   "https://nsearchives.nseindia.com/annual_reports/AR_27322_RELIANCE_2024_2025_A_07082025114457.pdf",
-    "ICICIBANK":  "https://nsearchives.nseindia.com/annual_reports/AR_27289_ICICIBANK_2024_2025_A_05082025201317.pdf",
-    "WIPRO":      "https://nsearchives.nseindia.com/annual_reports/AR_26582_WIPRO_2024_2025_A_21062025124943.pdf",
-    "HCLTECH":    "https://nsearchives.nseindia.com/annual_reports/AR_27254_HCLTECH_2024_2025_A_02082025194851.pdf",
+    "TCS": "https://nsearchives.nseindia.com/annual_reports/AR_26456_TCS_2024_2025_A_27052025233502.pdf",
+    "INFY": "https://nsearchives.nseindia.com/annual_reports/AR_26481_INFY_2024_2025_A_02062025153945.pdf",
+    "HDFCBANK": "https://nsearchives.nseindia.com/annual_reports/AR_27115_HDFCBANK_2024_2025_U_25072025220054.pdf",
+    "RELIANCE": "https://nsearchives.nseindia.com/annual_reports/AR_27322_RELIANCE_2024_2025_A_07082025114457.pdf",
+    "ICICIBANK": "https://nsearchives.nseindia.com/annual_reports/AR_27289_ICICIBANK_2024_2025_A_05082025201317.pdf",
+    "WIPRO": "https://nsearchives.nseindia.com/annual_reports/AR_26582_WIPRO_2024_2025_A_21062025124943.pdf",
+    "HCLTECH": "https://nsearchives.nseindia.com/annual_reports/AR_27254_HCLTECH_2024_2025_A_02082025194851.pdf",
     "BAJFINANCE": "https://nsearchives.nseindia.com/annual_reports/AR_26674_BAJFINANCE_2024_2025_A_02072025000055.pdf",
     "ASIANPAINT": "https://nsearchives.nseindia.com/annual_reports/AR_26496_ASIANPAINT_2024_2025_A_03062025224818.pdf",
-    "MARUTI":     "https://nsearchives.nseindia.com/annual_reports/AR_27293_MARUTI_2024_2025_A_05082025210558.pdf",
-    "SUNPHARMA":  "https://nsearchives.nseindia.com/annual_reports/AR_26732_SUNPHARMA_2024_2025_A_04072025175058.pdf",
-    "TITAN":      "https://nsearchives.nseindia.com/annual_reports/AR_26625_TITAN_2024_2025_A_27062025152121.pdf",
-    "LT":         "https://nsearchives.nseindia.com/annual_reports/AR_26451_LT_2024_2025_A_26052025131455.pdf",
+    "MARUTI": "https://nsearchives.nseindia.com/annual_reports/AR_27293_MARUTI_2024_2025_A_05082025210558.pdf",
+    "SUNPHARMA": "https://nsearchives.nseindia.com/annual_reports/AR_26732_SUNPHARMA_2024_2025_A_04072025175058.pdf",
+    "TITAN": "https://nsearchives.nseindia.com/annual_reports/AR_26625_TITAN_2024_2025_A_27062025152121.pdf",
+    "LT": "https://nsearchives.nseindia.com/annual_reports/AR_26451_LT_2024_2025_A_26052025131455.pdf",
     "ULTRACEMCO": "http://nsearchives.nseindia.com/annual_reports/AR_27126_ULTRACEMCO_2024_2025_A_28072025142546.pdf",
-    "NESTLEIND":  "https://nsearchives.nseindia.com/annual_reports/AR_26487_NESTLEIND_2024_2025_A_03062025002440.pdf",
-    "POWERGRID":  "https://nsearchives.nseindia.com/annual_reports/AR_27256_POWERGRID_2024_2025_A_03082025200555.pdf",
-    "NTPC":       "https://nsearchives.nseindia.com/annual_reports/AR_27336_NTPC_2024_2025_A_07082025183440.pdf",
-    "ITC":        "https://nsearchives.nseindia.com/annual_reports/AR_26624_ITC_2024_2025_A_27062025150548.pdf",
-    "AXISBANK":   "https://nsearchives.nseindia.com/annual_reports/AR_26622_AXISBANK_2024_2025_A_27062025104637.pdf",
+    "NESTLEIND": "https://nsearchives.nseindia.com/annual_reports/AR_26487_NESTLEIND_2024_2025_A_03062025002440.pdf",
+    "POWERGRID": "https://nsearchives.nseindia.com/annual_reports/AR_27256_POWERGRID_2024_2025_A_03082025200555.pdf",
+    "NTPC": "https://nsearchives.nseindia.com/annual_reports/AR_27336_NTPC_2024_2025_A_07082025183440.pdf",
+    "ITC": "https://nsearchives.nseindia.com/annual_reports/AR_26624_ITC_2024_2025_A_27062025150548.pdf",
+    "AXISBANK": "https://nsearchives.nseindia.com/annual_reports/AR_26622_AXISBANK_2024_2025_A_27062025104637.pdf",
 }
 
 
@@ -94,13 +94,16 @@ def _upsert_company(session: Session, ticker: str) -> Company:
 
 
 def _filing_exists(session: Session, company_id: int, fiscal_year: str) -> bool:
-    return session.scalar(
-        select(Filing).where(
-            Filing.company_id == company_id,
-            Filing.fiscal_year == fiscal_year,
-            Filing.filing_type == FilingType.annual_report,
+    return (
+        session.scalar(
+            select(Filing).where(
+                Filing.company_id == company_id,
+                Filing.fiscal_year == fiscal_year,
+                Filing.filing_type == FilingType.annual_report,
+            )
         )
-    ) is not None
+        is not None
+    )
 
 
 @app.command()
@@ -194,7 +197,7 @@ def reingest(
                 filing_type=FilingType.annual_report,
                 fiscal_year=FISCAL_YEAR,
                 pdf_url=pdf_url,
-                ingested_at=datetime.now(timezone.utc),
+                ingested_at=datetime.now(UTC),
             )
             session.add(filing)
             session.flush()
@@ -227,7 +230,7 @@ def reingest(
                 chunk_rows.append(chunk_row)
             session.flush()
 
-            for chunk_row, vec in zip(chunk_rows, embeddings):
+            for chunk_row, vec in zip(chunk_rows, embeddings, strict=False):
                 session.add(
                     Embedding(
                         chunk_id=chunk_row.id,
@@ -279,9 +282,13 @@ ORDER BY f.fiscal_year DESC, chunks DESC;
 """
     with engine.connect() as conn:
         from sqlalchemy import text
+
         rows = conn.execute(text(sql)).fetchall()
 
-    header = f"\n{'TICKER':<12} {'NAME':<30} {'FY':<8} {'PAGES':>6} {'CHUNKS':>7} {'EMBEDDINGS':>11} {'SCANNED'}"
+    header = (
+        f"\n{'TICKER':<12} {'NAME':<30} {'FY':<8} "
+        f"{'PAGES':>6} {'CHUNKS':>7} {'EMBEDDINGS':>11} {'SCANNED'}"
+    )
     typer.echo(header)
     typer.echo("-" * len(header))
     for row in rows:

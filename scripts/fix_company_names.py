@@ -19,26 +19,26 @@ from packages.ingestion.fetchers import _REGISTRY
 
 # Map ticker → sector enum name (lowercase, matches Postgres enum values)
 _SECTOR: dict[str, str] = {
-    "TCS":        "it",
-    "INFY":       "it",
-    "WIPRO":      "it",
-    "HCLTECH":    "it",
-    "HDFCBANK":   "banking",
-    "ICICIBANK":  "banking",
-    "AXISBANK":   "banking",
-    "KOTAKBANK":  "banking",
+    "TCS": "it",
+    "INFY": "it",
+    "WIPRO": "it",
+    "HCLTECH": "it",
+    "HDFCBANK": "banking",
+    "ICICIBANK": "banking",
+    "AXISBANK": "banking",
+    "KOTAKBANK": "banking",
     "BAJFINANCE": "finance",
-    "RELIANCE":   "energy",
-    "POWERGRID":  "energy",
-    "NTPC":       "energy",
-    "MARUTI":     "auto",
-    "SUNPHARMA":  "pharma",
+    "RELIANCE": "energy",
+    "POWERGRID": "energy",
+    "NTPC": "energy",
+    "MARUTI": "auto",
+    "SUNPHARMA": "pharma",
     "ULTRACEMCO": "cement",
-    "LT":         "infrastructure",
-    "NESTLEIND":  "fmcg",
-    "ITC":        "fmcg",
+    "LT": "infrastructure",
+    "NESTLEIND": "fmcg",
+    "ITC": "fmcg",
     "ASIANPAINT": "consumer",
-    "TITAN":      "consumer",
+    "TITAN": "consumer",
 }
 
 
@@ -57,23 +57,19 @@ def main() -> None:
 
         updated = 0
         for row in rows:
-            rid, ticker, old_name, old_sector = row
+            rid, ticker, old_name, _old_sector = row
             entry = _REGISTRY.get(ticker)
             if entry is None:
                 print(f"{rid:>3}  {ticker:<12}  {old_name:<20}  !! not in registry — skipped")
                 continue
 
-            new_name   = entry["name"]
+            new_name = entry["name"]
             new_sector = _SECTOR.get(ticker, "other")
 
             print(f"{rid:>3}  {ticker:<12}  {old_name:<20}  {new_name:<30}  {new_sector}")
 
             conn.execute(
-                text(
-                    "UPDATE sentinel.companies "
-                    "SET name = :name, sector = :sector "
-                    "WHERE id = :id"
-                ),
+                text("UPDATE sentinel.companies SET name = :name, sector = :sector WHERE id = :id"),
                 {"name": new_name, "sector": new_sector, "id": rid},
             )
             updated += 1
