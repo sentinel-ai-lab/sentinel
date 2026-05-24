@@ -41,6 +41,9 @@ dependencies = [
     #   uv pip install "onnxruntime==1.23.2" --python-platform x86_64-apple-darwin
     #   uv pip install "fastembed>=0.7.0"    --python-platform x86_64-apple-darwin
     # In CI / ARM Mac / Linux: uv add "fastembed>=0.7.0" works without the override.
+    "langgraph>=1.2.1",
+    "langchain-core>=1.4.0",
+    "google-generativeai>=0.8.6",
 ]
 
 # -----------------------------------------------------------
