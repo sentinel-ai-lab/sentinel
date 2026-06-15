@@ -51,6 +51,9 @@ tmp/
 downloads/
 *.pdf.tmp
 
+# Generated synthetic fine-tuning data
+packages/finetuning/data/
+
 # Docker
 .docker/
 
