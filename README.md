@@ -227,14 +227,14 @@ All PRs must:
 
 ## Roadmap
 
-| Phase | Weeks | Status |
-|---|---|---|
-| 1. Foundation | 1–2 | 🔄 In Progress |
-| 2. RAG Core | 3–4 | ⏳ Planned |
-| 3. Agent Framework | 5–6 | ⏳ Planned |
-| 4. Fine-Tuning | 7–9 | ⏳ Planned |
-| 5. Evals + Observability | 10–11 | ⏳ Planned |
-| 6. Launch | 12 | ⏳ Planned |
+| Phase | Weeks | Status | Deliverables |
+|---|---|---|---|
+| 1. Foundation | 1–2 | ✅ Completed | Aiven pgvector, Redis, Docker, CI/CD pipeline |
+| 2. RAG Core | 3–4 | ✅ Completed | FY25 filings, chunker, BGE embedding, hybrid search |
+| 3. Agent Framework | 5–6 | ✅ Completed | LangGraph orchestrator, research node, FastAPI API |
+| 4. Fine-Tuning | 7–9 | ✅ Completed | [Qwen-2.5-7B LoRA Adapter](https://huggingface.co/kishanaik5/sentinel-compliance-qwen25-7b-lora) (+18% F1 over GPT-4o-mini), [Benchmark Report](docs/benchmarks/compliance_benchmark.md) |
+| 5. Evals + Observability | 10–11 | 🔄 Next Up | RAGAS regression suite, Langfuse traces, PR-gating |
+| 6. Launch | 12 | ⏳ Planned | Demo UI, production deployment, release notes |
 
 ---
 
