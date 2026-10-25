@@ -33,7 +33,7 @@ SPLITS = {
 }
 
 VAL_FRAC = 0.10
-TEST_FRAC = 0.10          # train gets the remaining 0.80
+TEST_FRAC = 0.10  # train gets the remaining 0.80
 SEED = 42
 
 
@@ -83,8 +83,8 @@ def _stratified_split(rows: list[dict]) -> dict[str, list[dict]]:
             n_test = max(1, n_test)
             n_val = max(1, n_val)
         result["test"].extend(group[:n_test])
-        result["val"].extend(group[n_test:n_test + n_val])
-        result["train"].extend(group[n_test + n_val:])
+        result["val"].extend(group[n_test : n_test + n_val])
+        result["train"].extend(group[n_test + n_val :])
 
     for split in result.values():
         rng.shuffle(split)
@@ -122,8 +122,7 @@ def main() -> None:
     print("\nSplit summary:")
     for name in ("train", "val", "test"):
         rows_ = splits[name]
-        print(f"  {name:<5} {len(rows_):>5}  ({100 * len(rows_) / total:4.1f}%)  "
-              f"→ {SPLITS[name]}")
+        print(f"  {name:<5} {len(rows_):>5}  ({100 * len(rows_) / total:4.1f}%)  → {SPLITS[name]}")
         print(f"        {_fmt_dist(rows_)}")
 
 

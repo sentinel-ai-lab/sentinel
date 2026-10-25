@@ -70,9 +70,7 @@ def calculate_classification_metrics(
     accuracy = correct / total
 
     # Confusion matrix: conf_matrix[true][pred]
-    conf_matrix: dict[str, dict[str, int]] = {
-        label: dict.fromkeys(labels, 0) for label in labels
-    }
+    conf_matrix: dict[str, dict[str, int]] = {label: dict.fromkeys(labels, 0) for label in labels}
     for yt, yp in zip(y_true, y_pred, strict=True):
         if yt in conf_matrix and yp in conf_matrix[yt]:
             conf_matrix[yt][yp] += 1
