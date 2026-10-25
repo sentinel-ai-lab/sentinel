@@ -97,6 +97,7 @@ Write a simple Python function that calls Research agent, then Compliance agent.
 from typing import TypedDict, Annotated
 from langgraph.graph import StateGraph, END
 
+
 class AgentState(TypedDict):
     query: str
     research_draft: str
@@ -105,10 +106,12 @@ class AgentState(TypedDict):
     final_brief: str
     trace_id: str
 
+
 # Nodes
 def research_node(state: AgentState) -> AgentState: ...
 def compliance_node(state: AgentState) -> AgentState: ...
 def synthesize_node(state: AgentState) -> AgentState: ...
+
 
 # Graph
 graph = StateGraph(AgentState)

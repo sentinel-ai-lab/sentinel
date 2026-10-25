@@ -95,6 +95,8 @@ exclude = [
     "__pycache__",
     "alembic/versions",
     "alembic/versions/*",
+    "*.md",
+    "**/*.md",
 ]
 
 [tool.ruff.lint]

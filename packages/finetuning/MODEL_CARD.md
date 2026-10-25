@@ -104,7 +104,7 @@ headers = {"Authorization": "Bearer YOUR_HF_TOKEN"}
 
 payload = {
     "inputs": "### Instruction:\nClassify this financial claim for compliance.\n\n### Input:\nHDFC Bank net profit grew 33.5% YoY to ₹16,373 crore in Q3 FY24.\n\n### Response:\n",
-    "parameters": {"max_new_tokens": 120, "temperature": 0.1}
+    "parameters": {"max_new_tokens": 120, "temperature": 0.1},
 }
 
 response = requests.post(API_URL, headers=headers, json=payload)
