@@ -113,18 +113,18 @@ class HybridSearcher:
         bm25_hits = self.bm25_search(query, top_k=top_k)
         dense_hits = self.dense_search(query, top_k=top_k)
 
-        K = 60
+        k_rrf = 60
         rrf_scores: dict[int, float] = {}
         by_id: dict[int, dict] = {}
 
         for rank, hit in enumerate(bm25_hits, start=1):
             cid = hit["chunk_id"]
-            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (K + rank)
+            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (k_rrf + rank)
             by_id[cid] = hit
 
         for rank, hit in enumerate(dense_hits, start=1):
             cid = hit["chunk_id"]
-            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (K + rank)
+            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (k_rrf + rank)
             by_id[cid] = hit
 
         sorted_ids = sorted(rrf_scores, key=lambda x: rrf_scores[x], reverse=True)

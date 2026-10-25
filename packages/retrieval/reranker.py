@@ -61,7 +61,7 @@ class Reranker:
         scores = list(model.rerank(query, documents))
 
         ranked = sorted(
-            zip(chunks, scores),
+            zip(chunks, scores, strict=False),
             key=lambda x: float(x[1]),
             reverse=True,
         )

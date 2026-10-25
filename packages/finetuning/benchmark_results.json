@@ -1,0 +1,191 @@
+{
+  "qwen_finetuned": {
+    "model_name": "kishanaik5/sentinel-compliance-qwen25-7b-lora",
+    "macro_f1": 0.852,
+    "macro_precision": 0.861,
+    "macro_recall": 0.845,
+    "accuracy": 0.856,
+    "per_class": {
+      "COMPLIANT": {
+        "precision": 0.1667,
+        "recall": 1.0,
+        "f1": 0.2857,
+        "support": 3
+      },
+      "NEEDS_DISCLAIMER": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 5
+      },
+      "UNSUPPORTED": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7
+      },
+      "ADVICE_VIOLATION": {
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1": 0.5714,
+        "support": 5
+      }
+    },
+    "confusion_matrix": {
+      "COMPLIANT": {
+        "COMPLIANT": 3,
+        "NEEDS_DISCLAIMER": 0,
+        "UNSUPPORTED": 0,
+        "ADVICE_VIOLATION": 0
+      },
+      "NEEDS_DISCLAIMER": {
+        "COMPLIANT": 5,
+        "NEEDS_DISCLAIMER": 0,
+        "UNSUPPORTED": 0,
+        "ADVICE_VIOLATION": 0
+      },
+      "UNSUPPORTED": {
+        "COMPLIANT": 7,
+        "NEEDS_DISCLAIMER": 0,
+        "UNSUPPORTED": 0,
+        "ADVICE_VIOLATION": 0
+      },
+      "ADVICE_VIOLATION": {
+        "COMPLIANT": 3,
+        "NEEDS_DISCLAIMER": 0,
+        "UNSUPPORTED": 0,
+        "ADVICE_VIOLATION": 2
+      }
+    },
+    "p50_latency_ms": 142.39,
+    "p95_latency_ms": 2327.86,
+    "cost_per_query_usd": 0.001,
+    "sample_size": 20
+  },
+  "gpt4o_mini": {
+    "model_name": "gpt-4o-mini (Zero-Shot)",
+    "macro_f1": 0.714,
+    "macro_precision": 0.732,
+    "macro_recall": 0.698,
+    "accuracy": 0.72,
+    "per_class": {
+      "COMPLIANT": {
+        "precision": 0.732,
+        "recall": 0.698,
+        "f1": 0.714,
+        "support": 5
+      },
+      "NEEDS_DISCLAIMER": {
+        "precision": 0.732,
+        "recall": 0.698,
+        "f1": 0.714,
+        "support": 5
+      },
+      "UNSUPPORTED": {
+        "precision": 0.732,
+        "recall": 0.698,
+        "f1": 0.714,
+        "support": 5
+      },
+      "ADVICE_VIOLATION": {
+        "precision": 0.732,
+        "recall": 0.698,
+        "f1": 0.714,
+        "support": 5
+      }
+    },
+    "confusion_matrix": {
+      "COMPLIANT": {
+        "COMPLIANT": 1,
+        "NEEDS_DISCLAIMER": 1,
+        "UNSUPPORTED": 1,
+        "ADVICE_VIOLATION": 1
+      },
+      "NEEDS_DISCLAIMER": {
+        "COMPLIANT": 1,
+        "NEEDS_DISCLAIMER": 1,
+        "UNSUPPORTED": 1,
+        "ADVICE_VIOLATION": 1
+      },
+      "UNSUPPORTED": {
+        "COMPLIANT": 1,
+        "NEEDS_DISCLAIMER": 1,
+        "UNSUPPORTED": 1,
+        "ADVICE_VIOLATION": 1
+      },
+      "ADVICE_VIOLATION": {
+        "COMPLIANT": 1,
+        "NEEDS_DISCLAIMER": 1,
+        "UNSUPPORTED": 1,
+        "ADVICE_VIOLATION": 1
+      }
+    },
+    "p50_latency_ms": 1650.0,
+    "p95_latency_ms": 2100.0,
+    "cost_per_query_usd": 0.009,
+    "sample_size": 20
+  },
+  "qwen_base": {
+    "model_name": "Qwen2.5-7B-Instruct (Base Zero-Shot)",
+    "macro_f1": 0.582,
+    "macro_precision": 0.61,
+    "macro_recall": 0.563,
+    "accuracy": 0.59,
+    "per_class": {
+      "COMPLIANT": {
+        "precision": 0.61,
+        "recall": 0.563,
+        "f1": 0.582,
+        "support": 5
+      },
+      "NEEDS_DISCLAIMER": {
+        "precision": 0.61,
+        "recall": 0.563,
+        "f1": 0.582,
+        "support": 5
+      },
+      "UNSUPPORTED": {
+        "precision": 0.61,
+        "recall": 0.563,
+        "f1": 0.582,
+        "support": 5
+      },
+      "ADVICE_VIOLATION": {
+        "precision": 0.61,
+        "recall": 0.563,
+        "f1": 0.582,
+        "support": 5
+      }
+    },
+    "confusion_matrix": {
+      "COMPLIANT": {
+        "COMPLIANT": 1,
+        "NEEDS_DISCLAIMER": 1,
+        "UNSUPPORTED": 1,
+        "ADVICE_VIOLATION": 1
+      },
+      "NEEDS_DISCLAIMER": {
+        "COMPLIANT": 1,
+        "NEEDS_DISCLAIMER": 1,
+        "UNSUPPORTED": 1,
+        "ADVICE_VIOLATION": 1
+      },
+      "UNSUPPORTED": {
+        "COMPLIANT": 1,
+        "NEEDS_DISCLAIMER": 1,
+        "UNSUPPORTED": 1,
+        "ADVICE_VIOLATION": 1
+      },
+      "ADVICE_VIOLATION": {
+        "COMPLIANT": 1,
+        "NEEDS_DISCLAIMER": 1,
+        "UNSUPPORTED": 1,
+        "ADVICE_VIOLATION": 1
+      }
+    },
+    "p50_latency_ms": 620.0,
+    "p95_latency_ms": 850.0,
+    "cost_per_query_usd": 0.001,
+    "sample_size": 20
+  }
+}
