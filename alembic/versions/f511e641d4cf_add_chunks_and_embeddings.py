@@ -17,15 +17,15 @@ sentinel.embeddings uses the column name `vector` (matches the live DB).
 Requires pgvector.  Enable via Aiven Console → Service → Extensions → "vector",
 or run:  CREATE EXTENSION IF NOT EXISTS vector;
 """
-from typing import Sequence, Union
 
-import sqlalchemy as sa
+from collections.abc import Sequence
+
 from alembic import op
 
 revision: str = "f511e641d4cf"
-down_revision: Union[str, Sequence[str], None] = "8164c7ff610f"
-branch_labels: Union[str, Sequence[str], None] = None
-depends_on: Union[str, Sequence[str], None] = None
+down_revision: str | Sequence[str] | None = "8164c7ff610f"
+branch_labels: str | Sequence[str] | None = None
+depends_on: str | Sequence[str] | None = None
 
 EMBEDDING_DIM = 384
 
@@ -35,7 +35,7 @@ def upgrade() -> None:
     op.execute("CREATE EXTENSION IF NOT EXISTS vector")
 
     # Use raw SQL so CREATE TABLE IF NOT EXISTS is idempotent.
-    op.execute(f"""
+    op.execute("""
         CREATE TABLE IF NOT EXISTS sentinel.chunks (
             id             SERIAL      NOT NULL,
             raw_document_id INTEGER    NOT NULL,
@@ -52,9 +52,7 @@ def upgrade() -> None:
             FOREIGN KEY (raw_document_id) REFERENCES sentinel.raw_documents(id)
         )
     """)
-    op.execute(
-        "ALTER TABLE sentinel.chunks ADD COLUMN IF NOT EXISTS char_count INTEGER"
-    )
+    op.execute("ALTER TABLE sentinel.chunks ADD COLUMN IF NOT EXISTS char_count INTEGER")
     op.execute(
         "CREATE INDEX IF NOT EXISTS ix_sentinel_chunks_raw_document_id "
         "ON sentinel.chunks (raw_document_id)"
@@ -74,9 +72,9 @@ def upgrade() -> None:
     """)
     op.execute(
         "CREATE INDEX IF NOT EXISTS ix_sentinel_embeddings_ivfflat "
-        f"ON sentinel.embeddings "
-        f"USING ivfflat (vector vector_cosine_ops) "
-        f"WITH (lists = 100)"
+        "ON sentinel.embeddings "
+        "USING ivfflat (vector vector_cosine_ops) "
+        "WITH (lists = 100)"
     )
 
 

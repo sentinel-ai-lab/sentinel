@@ -88,8 +88,13 @@ package = false  # monorepo root is not a package itself
 line-length = 100
 target-version = "py311"
 exclude = [
-    ".git", ".mypy_cache", ".ruff_cache", ".venv",
-    "__pycache__", "alembic/versions",
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "alembic/versions",
+    "alembic/versions/*",
 ]
 
 [tool.ruff.lint]
