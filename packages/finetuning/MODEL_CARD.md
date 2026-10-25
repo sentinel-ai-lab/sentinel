@@ -24,6 +24,7 @@ tags:
 - **Base Model:** `unsloth/Qwen2.5-7B-Instruct-bnb-4bit`
 - **Method:** 4-bit QLoRA (Rank=16, Alpha=32, Dropout=0.05)
 - **Library:** Unsloth, PEFT, TRL, Hugging Face Hub
+- **Dataset:** [Kaggle: Banking FY25-26 Compliance Dataset](https://www.kaggle.com/datasets/kishanknaik/finetuning-banking-fy-25-26-dataset)
 - **License:** Apache 2.0
 
 ---
@@ -34,14 +35,23 @@ Evaluated on a held-out test split of 271 Indian equity research claims (`test.j
 
 | Model | Macro F1 | Accuracy | Latency (p50) | Latency (p95) | Cost / 1k Queries |
 |---|---|---|---|---|---|
-| **Qwen-2.5-7B LoRA (This Model)** | **0.852** | **0.856** | **~600 ms** | **~780 ms** | **$1.00** |
-| GPT-4o-mini (Zero-Shot Baseline) | 0.714 | 0.720 | ~1,650 ms | ~2,100 ms | $9.00 |
-| Base Qwen-2.5-7B (Zero-Shot) | 0.582 | 0.590 | ~620 ms | ~850 ms | $1.00 |
+| **Qwen-2.5-7B LoRA (This Model)** | **0.996** | **99.6%** | **~612 ms** | **~785 ms** | **$1.00** |
+| GPT-4o-mini (Zero-Shot Baseline) | 0.714 | 72.0% | ~1,650 ms | ~2,100 ms | $9.00 |
+| Base Qwen-2.5-7B (Zero-Shot) | 0.582 | 59.0% | ~620 ms | ~850 ms | $1.00 |
 
-### Key Improvements:
-- **+18% Macro F1 improvement** over GPT-4o-mini baseline on compliance classification.
-- **3x faster p50 latency** compared to cloud API calls.
-- **9x cost reduction** when deployed on dedicated/spot GPU hardware.
+### Per-Class Test Set Metrics (n=271):
+```
+                  precision    recall  f1-score   support
+
+       COMPLIANT       1.00      1.00      1.00        81
+NEEDS_DISCLAIMER       0.99      1.00      0.99        68
+     UNSUPPORTED       1.00      0.99      0.99        68
+ADVICE_VIOLATION       1.00      1.00      1.00        54
+
+        accuracy                           1.00       271
+       macro avg       1.00      1.00      1.00       271
+    weighted avg       1.00      1.00      1.00       271
+```
 
 ---
 
@@ -115,13 +125,14 @@ print(response.json())
 
 ## ⚙️ Training Details
 
-- **Dataset Size:** 2,720 curated synthetic examples across Indian equities (BSE/NSE filings).
+- **Dataset:** 2,720 curated synthetic examples across Indian equities (BSE/NSE filings).
 - **Split:** 80% Train (2,174), 10% Validation (271), 10% Test (271) with stratified class distribution.
-- **Hardware:** 1x NVIDIA RTX 4090 24GB VRAM on RunPod spot instance.
-- **Training Time:** ~35 minutes (3 epochs).
+- **Hardware:** 1x NVIDIA Tesla T4 GPU on Kaggle.
+- **Training Time:** ~58 minutes (3 epochs, 204 steps).
+- **Training Loss:** 0.5711.
 - **Hyperparameters:**
-  - Learning Rate: `2e-4` (Cosine schedule with warmup)
-  - Optimizer: `AdamW 8-bit`
+  - Learning Rate: `2e-4`
+  - Batch Size: 8 per device, 4 gradient accumulation steps (effective batch size 32)
   - LoRA Rank: `16`
   - LoRA Alpha: `32`
   - Target Modules: `q_proj`, `k_proj`, `v_proj`, `o_proj`, `gate_proj`, `up_proj`, `down_proj`

@@ -97,6 +97,8 @@ exclude = [
     "alembic/versions/*",
     "*.md",
     "**/*.md",
+    "*.ipynb",
+    "**/*.ipynb",
 ]
 
 [tool.ruff.lint]
