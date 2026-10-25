@@ -47,8 +47,7 @@ def test_compliance_review_draft_with_violations():
     report = client.review_draft(draft, citations=[{"company": "INFY"}])
     assert report.has_violations is True
     assert (
-        "buy" not in report.audited_text.lower()
-        or "guaranteed" not in report.audited_text.lower()
+        "buy" not in report.audited_text.lower() or "guaranteed" not in report.audited_text.lower()
     )
     assert report.claims_evaluated >= 1 or len(report.audit_trace) >= 1
 

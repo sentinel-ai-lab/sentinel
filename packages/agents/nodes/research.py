@@ -47,9 +47,7 @@ def research_node(state: AgentState) -> AgentState:
         ticker = chunk.get("company_ticker", "Unknown")
         page = chunk.get("page_number", "?")
         fy = chunk.get("fiscal_year", "FY2025")
-        context_parts.append(
-            f"[{ticker}, {fy}, p.{page}]:\n{chunk['text']}"
-        )
+        context_parts.append(f"[{ticker}, {fy}, p.{page}]:\n{chunk['text']}")
         citations.append(
             {
                 "index": i + 1,

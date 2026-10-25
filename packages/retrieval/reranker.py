@@ -66,7 +66,4 @@ class Reranker:
             reverse=True,
         )
 
-        return [
-            {**chunk, "reranker_score": float(score)}
-            for chunk, score in ranked[:top_n]
-        ]
+        return [{**chunk, "reranker_score": float(score)} for chunk, score in ranked[:top_n]]

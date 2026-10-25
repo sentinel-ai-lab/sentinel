@@ -63,6 +63,7 @@ async def chat(request: ChatRequest):
     }
 
     if request.stream:
+
         async def event_stream():
             result = sentinel_graph.invoke(initial_state)
             answer = result.get("final_brief", "")

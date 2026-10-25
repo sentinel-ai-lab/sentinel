@@ -54,7 +54,7 @@ TOTAL_BATCHES = TARGET_TOTAL // BATCH_SIZE  # 150
 OUTPUT_PATH = "packages/finetuning/data/raw_synthetic.jsonl"
 
 SLEEP_BETWEEN_BATCHES = 0.5  # paid tier
-RATE_LIMIT_SLEEP = 30.0      # back-off on 429 before the single retry
+RATE_LIMIT_SLEEP = 30.0  # back-off on 429 before the single retry
 
 # The fixed instruction for every example (injected by us, not the model).
 INSTRUCTION = "Classify this financial claim for compliance."
@@ -84,10 +84,20 @@ _LABEL_DEFS = (
 
 # Rotated across batches for topical variety over 150 batches.
 SECTORS = [
-    "IT services", "private-sector banks", "FMCG", "automobiles",
-    "pharmaceuticals", "cement", "metals & mining", "oil, gas & energy",
-    "capital goods & infrastructure", "paints & consumer durables",
-    "telecom", "NBFCs & financials", "real estate", "specialty chemicals",
+    "IT services",
+    "private-sector banks",
+    "FMCG",
+    "automobiles",
+    "pharmaceuticals",
+    "cement",
+    "metals & mining",
+    "oil, gas & energy",
+    "capital goods & infrastructure",
+    "paints & consumer durables",
+    "telecom",
+    "NBFCs & financials",
+    "real estate",
+    "specialty chemicals",
     "power & utilities",
 ]
 
@@ -153,8 +163,7 @@ def _parse_examples(raw: str) -> list[dict]:
         input_ = item.get("input")
         output = item.get("output")
         label = item.get("label")
-        if not (isinstance(input_, str) and isinstance(output, str)
-                and isinstance(label, str)):
+        if not (isinstance(input_, str) and isinstance(output, str) and isinstance(label, str)):
             continue
         label = label.strip().upper()
         input_, output = input_.strip(), output.strip()
@@ -191,9 +200,7 @@ def _generate_batch(client: genai.Client, batch_num: int) -> list[dict]:
 
     for attempt in (1, 2):
         try:
-            response = client.models.generate_content(
-                model=MODEL, contents=prompt, config=config
-            )
+            response = client.models.generate_content(model=MODEL, contents=prompt, config=config)
             return _parse_examples(response.text)
         except Exception as exc:
             msg = str(exc)
@@ -275,8 +282,7 @@ def main() -> None:
 
             total_written += len(examples)
             print(
-                f"Batch {batch_num + 1}/{TOTAL_BATCHES} — "
-                f"TOTAL examples so far: {total_written}",
+                f"Batch {batch_num + 1}/{TOTAL_BATCHES} — TOTAL examples so far: {total_written}",
                 flush=True,
             )
 

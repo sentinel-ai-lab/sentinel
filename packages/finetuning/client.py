@@ -215,9 +215,7 @@ class ComplianceModelClient:
 
         # Split into distinct sentences / lines
         raw_sentences = [
-            s.strip()
-            for s in re.split(r"(?<=[.!?])\s+|\n\n+", draft)
-            if len(s.strip()) > 15
+            s.strip() for s in re.split(r"(?<=[.!?])\s+|\n\n+", draft) if len(s.strip()) > 15
         ]
 
         if not raw_sentences:
@@ -352,9 +350,7 @@ class ComplianceModelClient:
             return ComplianceClassification(
                 label="ADVICE_VIOLATION",
                 explanation="Contains explicit investment recommendation or target price.",
-                rewrite=re.sub(
-                    r"(?i)\b(buy|sell|strong buy|accumulate)\b", "observe", claim
-                ),
+                rewrite=re.sub(r"(?i)\b(buy|sell|strong buy|accumulate)\b", "observe", claim),
                 raw_output="ADVICE_VIOLATION: Direct investment recommendation detected.",
                 latency_ms=latency_ms,
                 model_used="rule-based-fallback",
