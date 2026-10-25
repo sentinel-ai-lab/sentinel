@@ -1,59 +1,37 @@
 """
 Sentinel — Compliance Node
 
-Passes the research draft through a Gemini 2.5 Flash call that:
-  - Removes investment-advice language
-  - Adds risk disclaimers where needed
-  - Strips any claims not backed by citations
-  - Preserves all factual, cited content unchanged
+Runs the research draft through the fine-tuned Qwen-2.5-7B LoRA compliance classifier
+(kishanaik5/sentinel-compliance-qwen25-7b-lora).
 
-Falls back to the research_draft (with a disclaimer appended) if the
-Gemini API call fails or returns an empty response.
-
-Uses google.genai (new SDK) — google.generativeai is deprecated.
+Key responsibilities:
+  1. Detects and rewrites any statements violating SEBI investment-advice guidelines.
+  2. Ensures forward-looking projections include mandatory risk disclaimers.
+  3. Validates citations and flags unsupported claims.
+  4. Preserves verified, factual equity research text.
+  5. Provides full audit trace for compliance review and Langfuse observability.
 """
 
 from __future__ import annotations
 
-import os
-
-import google.genai as genai
-import google.genai.types as genai_types
-from dotenv import load_dotenv
-
 from packages.agents.state import AgentState
+from packages.finetuning.client import ComplianceModelClient
 
-load_dotenv("infra/.env")
-
-_SYSTEM_PROMPT = (
-    "You are a financial compliance reviewer for an Indian equities research platform.\n\n"
-    "Review the draft below and:\n"
-    "1. Fix any sentences that constitute investment advice\n"
-    "2. Add 'Past performance is not indicative of future results' disclaimer "
-    "if forward-looking statements exist\n"
-    "3. Remove any unsupported claims not backed by the provided citations\n"
-    "4. Keep all factual, cited content unchanged\n\n"
-    "Return ONLY the compliant version. No meta-commentary."
-)
-
-_DISCLAIMER = (
-    "\n\n---\n*Past performance is not indicative of future results. "
-    "This content is for informational purposes only and does not constitute "
-    "investment advice.*"
-)
+_client = ComplianceModelClient()
 
 
 def compliance_node(state: AgentState) -> AgentState:
     """
-    LangGraph node: compliance review via Gemini 2.5 Flash.
+    LangGraph node: compliance review via fine-tuned Qwen-2.5-7B LoRA model.
 
     Reads state["research_draft"] and state["citations"].
-    Returns state with compliance_result and final_brief populated.
-    Falls back to research_draft + disclaimer on API failure.
+    Populates:
+      - state["compliance_result"]: textual audit summary of findings
+      - state["final_brief"]: audited, compliant final text
+      - state["metadata"]["compliance"]: structured audit metrics
     """
     draft = state.get("research_draft") or ""
 
-    # If the research node produced nothing, propagate an error
     if not draft.strip():
         return {
             **state,
@@ -62,35 +40,29 @@ def compliance_node(state: AgentState) -> AgentState:
             "error": "research_draft was empty — cannot run compliance check",
         }
 
-    try:
-        client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    citations = state.get("citations") or []
+    report = _client.review_draft(draft, citations=citations)
 
-        prompt = (
-            f"Draft:\n{draft}"
-            f"\n\nCitations available:\n{state.get('citations', [])}"
-        )
-
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt,
-            config=genai_types.GenerateContentConfig(
-                system_instruction=_SYSTEM_PROMPT,
-            ),
-        )
-
-        # response.text can be None if the model returns only thought parts
-        final = response.text
-
-        if not final:
-            # Fallback: use research draft + standard disclaimer
-            final = draft + _DISCLAIMER
-
-    except Exception:  # noqa: BLE001
-        # Any API error (503, rate limit, etc.) → use draft + disclaimer
-        final = draft + _DISCLAIMER
+    existing_metadata = dict(state.get("metadata") or {})
+    existing_metadata["compliance"] = {
+        "model_used": report.model_used,
+        "summary": report.compliance_summary,
+        "has_violations": report.has_violations,
+        "needs_disclaimer": report.needs_disclaimer,
+        "claims_evaluated": len(report.audit_trace),
+        "audit_trace": [
+            {
+                "label": c.label,
+                "explanation": c.explanation,
+                "latency_ms": round(c.latency_ms, 2),
+            }
+            for c in report.audit_trace
+        ],
+    }
 
     return {
         **state,
-        "compliance_result": final,
-        "final_brief": final,
+        "compliance_result": report.compliance_summary,
+        "final_brief": report.audited_text,
+        "metadata": existing_metadata,
     }

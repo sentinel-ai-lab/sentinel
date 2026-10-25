@@ -41,8 +41,11 @@ class Settings(BaseSettings):
     langfuse_public_key: str = Field(default="")
     langfuse_host: str = Field(default="http://localhost:3000")
 
-    # HuggingFace
+    # HuggingFace & Compliance Model
     hf_token: str = Field(default="")
+    compliance_model_id: str = Field(default="kishanaik5/sentinel-compliance-qwen25-7b-lora")
+    compliance_endpoint_url: str = Field(default="")
+    compliance_backend: str = Field(default="auto")  # "auto", "huggingface", "endpoint", "gemini"
 
     # News
     news_api_key: str = Field(default="")

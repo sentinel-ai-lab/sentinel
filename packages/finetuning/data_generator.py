@@ -195,7 +195,7 @@ def _generate_batch(client: genai.Client, batch_num: int) -> list[dict]:
                 model=MODEL, contents=prompt, config=config
             )
             return _parse_examples(response.text)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             msg = str(exc)
             is_rate_limit = "429" in msg or "RESOURCE_EXHAUSTED" in msg
             if is_rate_limit and attempt == 1:
