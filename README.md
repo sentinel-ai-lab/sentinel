@@ -233,7 +233,7 @@ All PRs must:
 | 2. RAG Core | 3–4 | ✅ Completed | FY25 filings, chunker, BGE embedding, hybrid search |
 | 3. Agent Framework | 5–6 | ✅ Completed | LangGraph orchestrator, research node, FastAPI API |
 | 4. Fine-Tuning | 7–9 | ✅ Completed | [Qwen-2.5-7B LoRA Adapter](https://huggingface.co/kishanaik5/sentinel-compliance-qwen25-7b-lora) (+18% F1 over GPT-4o-mini), [Benchmark Report](docs/benchmarks/compliance_benchmark.md) |
-| 5. Evals + Observability | 10–11 | 🔄 Next Up | RAGAS regression suite, Langfuse traces, PR-gating |
+| 5. Evals + Observability | 10–11 | ✅ Completed | RAGAS regression harness, 5D LLM judge, Citation verifier, Langfuse exporter, PR gate & drift monitoring |
 | 6. Launch | 12 | ⏳ Planned | Demo UI, production deployment, release notes |
 
 ---
