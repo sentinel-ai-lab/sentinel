@@ -60,3 +60,8 @@ packages/finetuning/data/
 # Logs
 *.log
 logs/
+
+# Frontend
+node_modules/
+apps/web/dist/
+apps/web/.oxlintrc.json
