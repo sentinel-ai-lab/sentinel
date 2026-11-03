@@ -18,7 +18,8 @@ A **production-grade multi-agent LLM system** that ingests BSE/NSE filings and e
 
 ---
 
-![Demo placeholder]([docs/img/demo-placeholder.png](https://drive.google.com/file/d/15Et7td8FSfOkQdGNmjFgS3SVPtj37iFf/view?usp=sharing)
+<iframe src="https://drive.google.com/file/d/1SVY5u053cqItFKe3K1uHBuvfFzr8_JgF/view?usp=sharing" width="640" height="480" allow="autoplay"></iframe>
+
 
 
 </div>
