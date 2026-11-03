@@ -1,0 +1,29 @@
+{
+  "phase": 5,
+  "description": "Sentinel Phase 5 Baseline Benchmark — RAGAS + LLM Judge + Citation Quality",
+  "num_queries": 100,
+  "ragas_metrics": {
+    "faithfulness": 0.882,
+    "answer_relevancy": 0.854,
+    "context_precision": 0.838,
+    "context_recall": 0.871
+  },
+  "thresholds": {
+    "faithfulness": 0.80,
+    "answer_relevancy": 0.82,
+    "context_precision": 0.80,
+    "context_recall": 0.85
+  },
+  "llm_judge": {
+    "accuracy": 4.6,
+    "completeness": 4.5,
+    "clarity": 4.7,
+    "compliance": 4.9,
+    "citation_quality": 4.6,
+    "composite_score": 4.66
+  },
+  "citation_verification": {
+    "citation_accuracy": 0.965,
+    "hallucinated_rate": 0.035
+  }
+}

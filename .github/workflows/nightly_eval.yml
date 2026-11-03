@@ -1,0 +1,49 @@
+name: Nightly Evaluation Drift Check
+
+on:
+  schedule:
+    - cron: "0 2 * * 1" # Weekly every Monday at 02:00 UTC
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  drift-check:
+    name: Evaluate Metric Drift
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Cache uv dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: uv-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
+          restore-keys: uv-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: uv sync --all-extras --dev
+
+      - name: Run Metric Drift Check
+        run: |
+          uv run python scripts/drift_check.py \
+            --baseline docs/benchmarks/phase5_baseline.json \
+            --eval-set packages/evals/data/eval_qa_pairs.json \
+            --tolerance 0.05 \
+            --output docs/benchmarks/latest_drift_report.json
+
+      - name: Upload Drift Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-drift-report
+          path: docs/benchmarks/latest_drift_report.json

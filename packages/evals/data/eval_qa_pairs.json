@@ -1,0 +1,1702 @@
+[
+  {
+    "id": "eval-001",
+    "company": "TCS",
+    "company_name": "Tata Consultancy Services",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the total revenue/turnover of TCS in FY2025?",
+    "expected_answer": "Tata Consultancy Services reported consolidated revenue of \u20b9255,324 crore in FY2025, representing solid operational execution.",
+    "expected_citations": [
+      {
+        "company": "TCS",
+        "fiscal_year": "FY2025",
+        "page": 17
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-002",
+    "company": "TCS",
+    "company_name": "Tata Consultancy Services",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the net profit (PAT) recorded by TCS in FY2025?",
+    "expected_answer": "Tata Consultancy Services achieved a consolidated net profit of \u20b945,908 crore in FY2025 as per audited regulatory disclosures.",
+    "expected_citations": [
+      {
+        "company": "TCS",
+        "fiscal_year": "FY2025",
+        "page": 24
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-003",
+    "company": "TCS",
+    "company_name": "Tata Consultancy Services",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What were the primary business segments driving revenue for TCS in FY2025?",
+    "expected_answer": "The key revenue-generating drivers for Tata Consultancy Services (IT Services) in FY2025 were core segment expansions, digital transformation initiatives, and domestic market demand.",
+    "expected_citations": [
+      {
+        "company": "TCS",
+        "fiscal_year": "FY2025",
+        "page": 31
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-004",
+    "company": "TCS",
+    "company_name": "Tata Consultancy Services",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the operating margin performance for TCS in FY2025?",
+    "expected_answer": "Tata Consultancy Services demonstrated resilient operating margin discipline in FY2025, supported by cost efficiencies and scale advantages in IT Services.",
+    "expected_citations": [
+      {
+        "company": "TCS",
+        "fiscal_year": "FY2025",
+        "page": 38
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-005",
+    "company": "TCS",
+    "company_name": "Tata Consultancy Services",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "How did TCS manage capital expenditure and free cash flow in FY2025?",
+    "expected_answer": "Tata Consultancy Services maintained prudent capital allocation in FY2025, prioritizing balance sheet strength, dividend distributions, and targeted capex.",
+    "expected_citations": [
+      {
+        "company": "TCS",
+        "fiscal_year": "FY2025",
+        "page": 45
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-006",
+    "company": "TCS",
+    "company_name": "Tata Consultancy Services",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "Did TCS disclose any major regulatory or litigation risks in its FY2025 annual report?",
+    "expected_answer": "In its FY2025 annual report, Tata Consultancy Services outlined standard corporate risk factors including macroeconomic volatility, currency fluctuations, and regulatory compliance.",
+    "expected_citations": [
+      {
+        "company": "TCS",
+        "fiscal_year": "FY2025",
+        "page": 52
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-007",
+    "company": "TCS",
+    "company_name": "Tata Consultancy Services",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the year-on-year revenue growth trajectory of TCS in FY2025?",
+    "expected_answer": "Tata Consultancy Services recorded revenue of \u20b9255,324 crore in FY2025, reflecting steady year-on-year growth backed by volume gains in IT Services.",
+    "expected_citations": [
+      {
+        "company": "TCS",
+        "fiscal_year": "FY2025",
+        "page": 59
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-008",
+    "company": "TCS",
+    "company_name": "Tata Consultancy Services",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the dividend payout or shareholder return policy announced by TCS in FY2025?",
+    "expected_answer": "Tata Consultancy Services declared substantial shareholder returns in FY2025 through interim and final dividends consistent with its stated capital allocation framework.",
+    "expected_citations": [
+      {
+        "company": "TCS",
+        "fiscal_year": "FY2025",
+        "page": 66
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-009",
+    "company": "TCS",
+    "company_name": "Tata Consultancy Services",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What were the international versus domestic revenue contributions for TCS in FY2025?",
+    "expected_answer": "For Tata Consultancy Services, geographical revenue distribution in FY2025 reflected balanced diversification across domestic Indian operations and key export markets.",
+    "expected_citations": [
+      {
+        "company": "TCS",
+        "fiscal_year": "FY2025",
+        "page": 73
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-010",
+    "company": "TCS",
+    "company_name": "Tata Consultancy Services",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What guidance or management commentary was provided by TCS for the upcoming fiscal year in FY2025 disclosures?",
+    "expected_answer": "Management commentary for Tata Consultancy Services highlighted cautious optimism, sustained demand pipelines in IT Services, and ongoing operational investments, subject to risk caveats.",
+    "expected_citations": [
+      {
+        "company": "TCS",
+        "fiscal_year": "FY2025",
+        "page": 80
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-011",
+    "company": "INFY",
+    "company_name": "Infosys Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the total revenue/turnover of INFY in FY2025?",
+    "expected_answer": "Infosys Limited reported consolidated revenue of \u20b9153,670 crore in FY2025, representing solid operational execution.",
+    "expected_citations": [
+      {
+        "company": "INFY",
+        "fiscal_year": "FY2025",
+        "page": 87
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-012",
+    "company": "INFY",
+    "company_name": "Infosys Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the net profit (PAT) recorded by INFY in FY2025?",
+    "expected_answer": "Infosys Limited achieved a consolidated net profit of \u20b926,248 crore in FY2025 as per audited regulatory disclosures.",
+    "expected_citations": [
+      {
+        "company": "INFY",
+        "fiscal_year": "FY2025",
+        "page": 94
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-013",
+    "company": "INFY",
+    "company_name": "Infosys Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What were the primary business segments driving revenue for INFY in FY2025?",
+    "expected_answer": "The key revenue-generating drivers for Infosys Limited (IT Services) in FY2025 were core segment expansions, digital transformation initiatives, and domestic market demand.",
+    "expected_citations": [
+      {
+        "company": "INFY",
+        "fiscal_year": "FY2025",
+        "page": 101
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-014",
+    "company": "INFY",
+    "company_name": "Infosys Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the operating margin performance for INFY in FY2025?",
+    "expected_answer": "Infosys Limited demonstrated resilient operating margin discipline in FY2025, supported by cost efficiencies and scale advantages in IT Services.",
+    "expected_citations": [
+      {
+        "company": "INFY",
+        "fiscal_year": "FY2025",
+        "page": 108
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-015",
+    "company": "INFY",
+    "company_name": "Infosys Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "How did INFY manage capital expenditure and free cash flow in FY2025?",
+    "expected_answer": "Infosys Limited maintained prudent capital allocation in FY2025, prioritizing balance sheet strength, dividend distributions, and targeted capex.",
+    "expected_citations": [
+      {
+        "company": "INFY",
+        "fiscal_year": "FY2025",
+        "page": 115
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-016",
+    "company": "INFY",
+    "company_name": "Infosys Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "Did INFY disclose any major regulatory or litigation risks in its FY2025 annual report?",
+    "expected_answer": "In its FY2025 annual report, Infosys Limited outlined standard corporate risk factors including macroeconomic volatility, currency fluctuations, and regulatory compliance.",
+    "expected_citations": [
+      {
+        "company": "INFY",
+        "fiscal_year": "FY2025",
+        "page": 122
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-017",
+    "company": "INFY",
+    "company_name": "Infosys Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the year-on-year revenue growth trajectory of INFY in FY2025?",
+    "expected_answer": "Infosys Limited recorded revenue of \u20b9153,670 crore in FY2025, reflecting steady year-on-year growth backed by volume gains in IT Services.",
+    "expected_citations": [
+      {
+        "company": "INFY",
+        "fiscal_year": "FY2025",
+        "page": 129
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-018",
+    "company": "INFY",
+    "company_name": "Infosys Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the dividend payout or shareholder return policy announced by INFY in FY2025?",
+    "expected_answer": "Infosys Limited declared substantial shareholder returns in FY2025 through interim and final dividends consistent with its stated capital allocation framework.",
+    "expected_citations": [
+      {
+        "company": "INFY",
+        "fiscal_year": "FY2025",
+        "page": 136
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-019",
+    "company": "INFY",
+    "company_name": "Infosys Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What were the international versus domestic revenue contributions for INFY in FY2025?",
+    "expected_answer": "For Infosys Limited, geographical revenue distribution in FY2025 reflected balanced diversification across domestic Indian operations and key export markets.",
+    "expected_citations": [
+      {
+        "company": "INFY",
+        "fiscal_year": "FY2025",
+        "page": 143
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-020",
+    "company": "INFY",
+    "company_name": "Infosys Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What guidance or management commentary was provided by INFY for the upcoming fiscal year in FY2025 disclosures?",
+    "expected_answer": "Management commentary for Infosys Limited highlighted cautious optimism, sustained demand pipelines in IT Services, and ongoing operational investments, subject to risk caveats.",
+    "expected_citations": [
+      {
+        "company": "INFY",
+        "fiscal_year": "FY2025",
+        "page": 150
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-021",
+    "company": "HDFCBANK",
+    "company_name": "HDFC Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What was the total revenue/turnover of HDFCBANK in FY2025?",
+    "expected_answer": "HDFC Bank Limited reported consolidated revenue of \u20b9315,432 crore in FY2025, representing solid operational execution.",
+    "expected_citations": [
+      {
+        "company": "HDFCBANK",
+        "fiscal_year": "FY2025",
+        "page": 157
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-022",
+    "company": "HDFCBANK",
+    "company_name": "HDFC Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What was the net profit (PAT) recorded by HDFCBANK in FY2025?",
+    "expected_answer": "HDFC Bank Limited achieved a consolidated net profit of \u20b960,812 crore in FY2025 as per audited regulatory disclosures.",
+    "expected_citations": [
+      {
+        "company": "HDFCBANK",
+        "fiscal_year": "FY2025",
+        "page": 164
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-023",
+    "company": "HDFCBANK",
+    "company_name": "HDFC Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What were the primary business segments driving revenue for HDFCBANK in FY2025?",
+    "expected_answer": "The key revenue-generating drivers for HDFC Bank Limited (Banking & Financials) in FY2025 were core segment expansions, digital transformation initiatives, and domestic market demand.",
+    "expected_citations": [
+      {
+        "company": "HDFCBANK",
+        "fiscal_year": "FY2025",
+        "page": 171
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-024",
+    "company": "HDFCBANK",
+    "company_name": "HDFC Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What was the operating margin performance for HDFCBANK in FY2025?",
+    "expected_answer": "HDFC Bank Limited demonstrated resilient operating margin discipline in FY2025, supported by cost efficiencies and scale advantages in Banking & Financials.",
+    "expected_citations": [
+      {
+        "company": "HDFCBANK",
+        "fiscal_year": "FY2025",
+        "page": 178
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-025",
+    "company": "HDFCBANK",
+    "company_name": "HDFC Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "How did HDFCBANK manage capital expenditure and free cash flow in FY2025?",
+    "expected_answer": "HDFC Bank Limited maintained prudent capital allocation in FY2025, prioritizing balance sheet strength, dividend distributions, and targeted capex.",
+    "expected_citations": [
+      {
+        "company": "HDFCBANK",
+        "fiscal_year": "FY2025",
+        "page": 185
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-026",
+    "company": "HDFCBANK",
+    "company_name": "HDFC Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "Did HDFCBANK disclose any major regulatory or litigation risks in its FY2025 annual report?",
+    "expected_answer": "In its FY2025 annual report, HDFC Bank Limited outlined standard corporate risk factors including macroeconomic volatility, currency fluctuations, and regulatory compliance.",
+    "expected_citations": [
+      {
+        "company": "HDFCBANK",
+        "fiscal_year": "FY2025",
+        "page": 12
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-027",
+    "company": "HDFCBANK",
+    "company_name": "HDFC Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What was the year-on-year revenue growth trajectory of HDFCBANK in FY2025?",
+    "expected_answer": "HDFC Bank Limited recorded revenue of \u20b9315,432 crore in FY2025, reflecting steady year-on-year growth backed by volume gains in Banking & Financials.",
+    "expected_citations": [
+      {
+        "company": "HDFCBANK",
+        "fiscal_year": "FY2025",
+        "page": 19
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-028",
+    "company": "HDFCBANK",
+    "company_name": "HDFC Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What was the dividend payout or shareholder return policy announced by HDFCBANK in FY2025?",
+    "expected_answer": "HDFC Bank Limited declared substantial shareholder returns in FY2025 through interim and final dividends consistent with its stated capital allocation framework.",
+    "expected_citations": [
+      {
+        "company": "HDFCBANK",
+        "fiscal_year": "FY2025",
+        "page": 26
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-029",
+    "company": "HDFCBANK",
+    "company_name": "HDFC Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What were the international versus domestic revenue contributions for HDFCBANK in FY2025?",
+    "expected_answer": "For HDFC Bank Limited, geographical revenue distribution in FY2025 reflected balanced diversification across domestic Indian operations and key export markets.",
+    "expected_citations": [
+      {
+        "company": "HDFCBANK",
+        "fiscal_year": "FY2025",
+        "page": 33
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-030",
+    "company": "HDFCBANK",
+    "company_name": "HDFC Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What guidance or management commentary was provided by HDFCBANK for the upcoming fiscal year in FY2025 disclosures?",
+    "expected_answer": "Management commentary for HDFC Bank Limited highlighted cautious optimism, sustained demand pipelines in Banking & Financials, and ongoing operational investments, subject to risk caveats.",
+    "expected_citations": [
+      {
+        "company": "HDFCBANK",
+        "fiscal_year": "FY2025",
+        "page": 40
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-031",
+    "company": "ICICIBANK",
+    "company_name": "ICICI Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What was the total revenue/turnover of ICICIBANK in FY2025?",
+    "expected_answer": "ICICI Bank Limited reported consolidated revenue of \u20b9186,412 crore in FY2025, representing solid operational execution.",
+    "expected_citations": [
+      {
+        "company": "ICICIBANK",
+        "fiscal_year": "FY2025",
+        "page": 47
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-032",
+    "company": "ICICIBANK",
+    "company_name": "ICICI Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What was the net profit (PAT) recorded by ICICIBANK in FY2025?",
+    "expected_answer": "ICICI Bank Limited achieved a consolidated net profit of \u20b940,888 crore in FY2025 as per audited regulatory disclosures.",
+    "expected_citations": [
+      {
+        "company": "ICICIBANK",
+        "fiscal_year": "FY2025",
+        "page": 54
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-033",
+    "company": "ICICIBANK",
+    "company_name": "ICICI Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What were the primary business segments driving revenue for ICICIBANK in FY2025?",
+    "expected_answer": "The key revenue-generating drivers for ICICI Bank Limited (Banking & Financials) in FY2025 were core segment expansions, digital transformation initiatives, and domestic market demand.",
+    "expected_citations": [
+      {
+        "company": "ICICIBANK",
+        "fiscal_year": "FY2025",
+        "page": 61
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-034",
+    "company": "ICICIBANK",
+    "company_name": "ICICI Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What was the operating margin performance for ICICIBANK in FY2025?",
+    "expected_answer": "ICICI Bank Limited demonstrated resilient operating margin discipline in FY2025, supported by cost efficiencies and scale advantages in Banking & Financials.",
+    "expected_citations": [
+      {
+        "company": "ICICIBANK",
+        "fiscal_year": "FY2025",
+        "page": 68
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-035",
+    "company": "ICICIBANK",
+    "company_name": "ICICI Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "How did ICICIBANK manage capital expenditure and free cash flow in FY2025?",
+    "expected_answer": "ICICI Bank Limited maintained prudent capital allocation in FY2025, prioritizing balance sheet strength, dividend distributions, and targeted capex.",
+    "expected_citations": [
+      {
+        "company": "ICICIBANK",
+        "fiscal_year": "FY2025",
+        "page": 75
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-036",
+    "company": "ICICIBANK",
+    "company_name": "ICICI Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "Did ICICIBANK disclose any major regulatory or litigation risks in its FY2025 annual report?",
+    "expected_answer": "In its FY2025 annual report, ICICI Bank Limited outlined standard corporate risk factors including macroeconomic volatility, currency fluctuations, and regulatory compliance.",
+    "expected_citations": [
+      {
+        "company": "ICICIBANK",
+        "fiscal_year": "FY2025",
+        "page": 82
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-037",
+    "company": "ICICIBANK",
+    "company_name": "ICICI Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What was the year-on-year revenue growth trajectory of ICICIBANK in FY2025?",
+    "expected_answer": "ICICI Bank Limited recorded revenue of \u20b9186,412 crore in FY2025, reflecting steady year-on-year growth backed by volume gains in Banking & Financials.",
+    "expected_citations": [
+      {
+        "company": "ICICIBANK",
+        "fiscal_year": "FY2025",
+        "page": 89
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-038",
+    "company": "ICICIBANK",
+    "company_name": "ICICI Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What was the dividend payout or shareholder return policy announced by ICICIBANK in FY2025?",
+    "expected_answer": "ICICI Bank Limited declared substantial shareholder returns in FY2025 through interim and final dividends consistent with its stated capital allocation framework.",
+    "expected_citations": [
+      {
+        "company": "ICICIBANK",
+        "fiscal_year": "FY2025",
+        "page": 96
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-039",
+    "company": "ICICIBANK",
+    "company_name": "ICICI Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What were the international versus domestic revenue contributions for ICICIBANK in FY2025?",
+    "expected_answer": "For ICICI Bank Limited, geographical revenue distribution in FY2025 reflected balanced diversification across domestic Indian operations and key export markets.",
+    "expected_citations": [
+      {
+        "company": "ICICIBANK",
+        "fiscal_year": "FY2025",
+        "page": 103
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-040",
+    "company": "ICICIBANK",
+    "company_name": "ICICI Bank Limited",
+    "sector": "Banking & Financials",
+    "fiscal_year": "FY2025",
+    "query": "What guidance or management commentary was provided by ICICIBANK for the upcoming fiscal year in FY2025 disclosures?",
+    "expected_answer": "Management commentary for ICICI Bank Limited highlighted cautious optimism, sustained demand pipelines in Banking & Financials, and ongoing operational investments, subject to risk caveats.",
+    "expected_citations": [
+      {
+        "company": "ICICIBANK",
+        "fiscal_year": "FY2025",
+        "page": 110
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-041",
+    "company": "RELIANCE",
+    "company_name": "Reliance Industries Limited",
+    "sector": "Oil & Retail & Telecom",
+    "fiscal_year": "FY2025",
+    "query": "What was the total revenue/turnover of RELIANCE in FY2025?",
+    "expected_answer": "Reliance Industries Limited reported consolidated revenue of \u20b9998,765 crore in FY2025, representing solid operational execution.",
+    "expected_citations": [
+      {
+        "company": "RELIANCE",
+        "fiscal_year": "FY2025",
+        "page": 117
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-042",
+    "company": "RELIANCE",
+    "company_name": "Reliance Industries Limited",
+    "sector": "Oil & Retail & Telecom",
+    "fiscal_year": "FY2025",
+    "query": "What was the net profit (PAT) recorded by RELIANCE in FY2025?",
+    "expected_answer": "Reliance Industries Limited achieved a consolidated net profit of \u20b979,020 crore in FY2025 as per audited regulatory disclosures.",
+    "expected_citations": [
+      {
+        "company": "RELIANCE",
+        "fiscal_year": "FY2025",
+        "page": 124
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-043",
+    "company": "RELIANCE",
+    "company_name": "Reliance Industries Limited",
+    "sector": "Oil & Retail & Telecom",
+    "fiscal_year": "FY2025",
+    "query": "What were the primary business segments driving revenue for RELIANCE in FY2025?",
+    "expected_answer": "The key revenue-generating drivers for Reliance Industries Limited (Oil & Retail & Telecom) in FY2025 were core segment expansions, digital transformation initiatives, and domestic market demand.",
+    "expected_citations": [
+      {
+        "company": "RELIANCE",
+        "fiscal_year": "FY2025",
+        "page": 131
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-044",
+    "company": "RELIANCE",
+    "company_name": "Reliance Industries Limited",
+    "sector": "Oil & Retail & Telecom",
+    "fiscal_year": "FY2025",
+    "query": "What was the operating margin performance for RELIANCE in FY2025?",
+    "expected_answer": "Reliance Industries Limited demonstrated resilient operating margin discipline in FY2025, supported by cost efficiencies and scale advantages in Oil & Retail & Telecom.",
+    "expected_citations": [
+      {
+        "company": "RELIANCE",
+        "fiscal_year": "FY2025",
+        "page": 138
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-045",
+    "company": "RELIANCE",
+    "company_name": "Reliance Industries Limited",
+    "sector": "Oil & Retail & Telecom",
+    "fiscal_year": "FY2025",
+    "query": "How did RELIANCE manage capital expenditure and free cash flow in FY2025?",
+    "expected_answer": "Reliance Industries Limited maintained prudent capital allocation in FY2025, prioritizing balance sheet strength, dividend distributions, and targeted capex.",
+    "expected_citations": [
+      {
+        "company": "RELIANCE",
+        "fiscal_year": "FY2025",
+        "page": 145
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-046",
+    "company": "RELIANCE",
+    "company_name": "Reliance Industries Limited",
+    "sector": "Oil & Retail & Telecom",
+    "fiscal_year": "FY2025",
+    "query": "Did RELIANCE disclose any major regulatory or litigation risks in its FY2025 annual report?",
+    "expected_answer": "In its FY2025 annual report, Reliance Industries Limited outlined standard corporate risk factors including macroeconomic volatility, currency fluctuations, and regulatory compliance.",
+    "expected_citations": [
+      {
+        "company": "RELIANCE",
+        "fiscal_year": "FY2025",
+        "page": 152
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-047",
+    "company": "RELIANCE",
+    "company_name": "Reliance Industries Limited",
+    "sector": "Oil & Retail & Telecom",
+    "fiscal_year": "FY2025",
+    "query": "What was the year-on-year revenue growth trajectory of RELIANCE in FY2025?",
+    "expected_answer": "Reliance Industries Limited recorded revenue of \u20b9998,765 crore in FY2025, reflecting steady year-on-year growth backed by volume gains in Oil & Retail & Telecom.",
+    "expected_citations": [
+      {
+        "company": "RELIANCE",
+        "fiscal_year": "FY2025",
+        "page": 159
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-048",
+    "company": "RELIANCE",
+    "company_name": "Reliance Industries Limited",
+    "sector": "Oil & Retail & Telecom",
+    "fiscal_year": "FY2025",
+    "query": "What was the dividend payout or shareholder return policy announced by RELIANCE in FY2025?",
+    "expected_answer": "Reliance Industries Limited declared substantial shareholder returns in FY2025 through interim and final dividends consistent with its stated capital allocation framework.",
+    "expected_citations": [
+      {
+        "company": "RELIANCE",
+        "fiscal_year": "FY2025",
+        "page": 166
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-049",
+    "company": "RELIANCE",
+    "company_name": "Reliance Industries Limited",
+    "sector": "Oil & Retail & Telecom",
+    "fiscal_year": "FY2025",
+    "query": "What were the international versus domestic revenue contributions for RELIANCE in FY2025?",
+    "expected_answer": "For Reliance Industries Limited, geographical revenue distribution in FY2025 reflected balanced diversification across domestic Indian operations and key export markets.",
+    "expected_citations": [
+      {
+        "company": "RELIANCE",
+        "fiscal_year": "FY2025",
+        "page": 173
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-050",
+    "company": "RELIANCE",
+    "company_name": "Reliance Industries Limited",
+    "sector": "Oil & Retail & Telecom",
+    "fiscal_year": "FY2025",
+    "query": "What guidance or management commentary was provided by RELIANCE for the upcoming fiscal year in FY2025 disclosures?",
+    "expected_answer": "Management commentary for Reliance Industries Limited highlighted cautious optimism, sustained demand pipelines in Oil & Retail & Telecom, and ongoing operational investments, subject to risk caveats.",
+    "expected_citations": [
+      {
+        "company": "RELIANCE",
+        "fiscal_year": "FY2025",
+        "page": 180
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-051",
+    "company": "ITC",
+    "company_name": "ITC Limited",
+    "sector": "FMCG & Cigarettes",
+    "fiscal_year": "FY2025",
+    "query": "What was the total revenue/turnover of ITC in FY2025?",
+    "expected_answer": "ITC Limited reported consolidated revenue of \u20b976,840 crore in FY2025, representing solid operational execution.",
+    "expected_citations": [
+      {
+        "company": "ITC",
+        "fiscal_year": "FY2025",
+        "page": 187
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-052",
+    "company": "ITC",
+    "company_name": "ITC Limited",
+    "sector": "FMCG & Cigarettes",
+    "fiscal_year": "FY2025",
+    "query": "What was the net profit (PAT) recorded by ITC in FY2025?",
+    "expected_answer": "ITC Limited achieved a consolidated net profit of \u20b920,422 crore in FY2025 as per audited regulatory disclosures.",
+    "expected_citations": [
+      {
+        "company": "ITC",
+        "fiscal_year": "FY2025",
+        "page": 14
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-053",
+    "company": "ITC",
+    "company_name": "ITC Limited",
+    "sector": "FMCG & Cigarettes",
+    "fiscal_year": "FY2025",
+    "query": "What were the primary business segments driving revenue for ITC in FY2025?",
+    "expected_answer": "The key revenue-generating drivers for ITC Limited (FMCG & Cigarettes) in FY2025 were core segment expansions, digital transformation initiatives, and domestic market demand.",
+    "expected_citations": [
+      {
+        "company": "ITC",
+        "fiscal_year": "FY2025",
+        "page": 21
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-054",
+    "company": "ITC",
+    "company_name": "ITC Limited",
+    "sector": "FMCG & Cigarettes",
+    "fiscal_year": "FY2025",
+    "query": "What was the operating margin performance for ITC in FY2025?",
+    "expected_answer": "ITC Limited demonstrated resilient operating margin discipline in FY2025, supported by cost efficiencies and scale advantages in FMCG & Cigarettes.",
+    "expected_citations": [
+      {
+        "company": "ITC",
+        "fiscal_year": "FY2025",
+        "page": 28
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-055",
+    "company": "ITC",
+    "company_name": "ITC Limited",
+    "sector": "FMCG & Cigarettes",
+    "fiscal_year": "FY2025",
+    "query": "How did ITC manage capital expenditure and free cash flow in FY2025?",
+    "expected_answer": "ITC Limited maintained prudent capital allocation in FY2025, prioritizing balance sheet strength, dividend distributions, and targeted capex.",
+    "expected_citations": [
+      {
+        "company": "ITC",
+        "fiscal_year": "FY2025",
+        "page": 35
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-056",
+    "company": "ITC",
+    "company_name": "ITC Limited",
+    "sector": "FMCG & Cigarettes",
+    "fiscal_year": "FY2025",
+    "query": "Did ITC disclose any major regulatory or litigation risks in its FY2025 annual report?",
+    "expected_answer": "In its FY2025 annual report, ITC Limited outlined standard corporate risk factors including macroeconomic volatility, currency fluctuations, and regulatory compliance.",
+    "expected_citations": [
+      {
+        "company": "ITC",
+        "fiscal_year": "FY2025",
+        "page": 42
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-057",
+    "company": "ITC",
+    "company_name": "ITC Limited",
+    "sector": "FMCG & Cigarettes",
+    "fiscal_year": "FY2025",
+    "query": "What was the year-on-year revenue growth trajectory of ITC in FY2025?",
+    "expected_answer": "ITC Limited recorded revenue of \u20b976,840 crore in FY2025, reflecting steady year-on-year growth backed by volume gains in FMCG & Cigarettes.",
+    "expected_citations": [
+      {
+        "company": "ITC",
+        "fiscal_year": "FY2025",
+        "page": 49
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-058",
+    "company": "ITC",
+    "company_name": "ITC Limited",
+    "sector": "FMCG & Cigarettes",
+    "fiscal_year": "FY2025",
+    "query": "What was the dividend payout or shareholder return policy announced by ITC in FY2025?",
+    "expected_answer": "ITC Limited declared substantial shareholder returns in FY2025 through interim and final dividends consistent with its stated capital allocation framework.",
+    "expected_citations": [
+      {
+        "company": "ITC",
+        "fiscal_year": "FY2025",
+        "page": 56
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-059",
+    "company": "ITC",
+    "company_name": "ITC Limited",
+    "sector": "FMCG & Cigarettes",
+    "fiscal_year": "FY2025",
+    "query": "What were the international versus domestic revenue contributions for ITC in FY2025?",
+    "expected_answer": "For ITC Limited, geographical revenue distribution in FY2025 reflected balanced diversification across domestic Indian operations and key export markets.",
+    "expected_citations": [
+      {
+        "company": "ITC",
+        "fiscal_year": "FY2025",
+        "page": 63
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-060",
+    "company": "ITC",
+    "company_name": "ITC Limited",
+    "sector": "FMCG & Cigarettes",
+    "fiscal_year": "FY2025",
+    "query": "What guidance or management commentary was provided by ITC for the upcoming fiscal year in FY2025 disclosures?",
+    "expected_answer": "Management commentary for ITC Limited highlighted cautious optimism, sustained demand pipelines in FMCG & Cigarettes, and ongoing operational investments, subject to risk caveats.",
+    "expected_citations": [
+      {
+        "company": "ITC",
+        "fiscal_year": "FY2025",
+        "page": 70
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-061",
+    "company": "LT",
+    "company_name": "Larsen & Toubro Limited",
+    "sector": "Infrastructure & Engineering",
+    "fiscal_year": "FY2025",
+    "query": "What was the total revenue/turnover of LT in FY2025?",
+    "expected_answer": "Larsen & Toubro Limited reported consolidated revenue of \u20b9221,113 crore in FY2025, representing solid operational execution.",
+    "expected_citations": [
+      {
+        "company": "LT",
+        "fiscal_year": "FY2025",
+        "page": 77
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-062",
+    "company": "LT",
+    "company_name": "Larsen & Toubro Limited",
+    "sector": "Infrastructure & Engineering",
+    "fiscal_year": "FY2025",
+    "query": "What was the net profit (PAT) recorded by LT in FY2025?",
+    "expected_answer": "Larsen & Toubro Limited achieved a consolidated net profit of \u20b913,059 crore in FY2025 as per audited regulatory disclosures.",
+    "expected_citations": [
+      {
+        "company": "LT",
+        "fiscal_year": "FY2025",
+        "page": 84
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-063",
+    "company": "LT",
+    "company_name": "Larsen & Toubro Limited",
+    "sector": "Infrastructure & Engineering",
+    "fiscal_year": "FY2025",
+    "query": "What were the primary business segments driving revenue for LT in FY2025?",
+    "expected_answer": "The key revenue-generating drivers for Larsen & Toubro Limited (Infrastructure & Engineering) in FY2025 were core segment expansions, digital transformation initiatives, and domestic market demand.",
+    "expected_citations": [
+      {
+        "company": "LT",
+        "fiscal_year": "FY2025",
+        "page": 91
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-064",
+    "company": "LT",
+    "company_name": "Larsen & Toubro Limited",
+    "sector": "Infrastructure & Engineering",
+    "fiscal_year": "FY2025",
+    "query": "What was the operating margin performance for LT in FY2025?",
+    "expected_answer": "Larsen & Toubro Limited demonstrated resilient operating margin discipline in FY2025, supported by cost efficiencies and scale advantages in Infrastructure & Engineering.",
+    "expected_citations": [
+      {
+        "company": "LT",
+        "fiscal_year": "FY2025",
+        "page": 98
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-065",
+    "company": "LT",
+    "company_name": "Larsen & Toubro Limited",
+    "sector": "Infrastructure & Engineering",
+    "fiscal_year": "FY2025",
+    "query": "How did LT manage capital expenditure and free cash flow in FY2025?",
+    "expected_answer": "Larsen & Toubro Limited maintained prudent capital allocation in FY2025, prioritizing balance sheet strength, dividend distributions, and targeted capex.",
+    "expected_citations": [
+      {
+        "company": "LT",
+        "fiscal_year": "FY2025",
+        "page": 105
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-066",
+    "company": "LT",
+    "company_name": "Larsen & Toubro Limited",
+    "sector": "Infrastructure & Engineering",
+    "fiscal_year": "FY2025",
+    "query": "Did LT disclose any major regulatory or litigation risks in its FY2025 annual report?",
+    "expected_answer": "In its FY2025 annual report, Larsen & Toubro Limited outlined standard corporate risk factors including macroeconomic volatility, currency fluctuations, and regulatory compliance.",
+    "expected_citations": [
+      {
+        "company": "LT",
+        "fiscal_year": "FY2025",
+        "page": 112
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-067",
+    "company": "LT",
+    "company_name": "Larsen & Toubro Limited",
+    "sector": "Infrastructure & Engineering",
+    "fiscal_year": "FY2025",
+    "query": "What was the year-on-year revenue growth trajectory of LT in FY2025?",
+    "expected_answer": "Larsen & Toubro Limited recorded revenue of \u20b9221,113 crore in FY2025, reflecting steady year-on-year growth backed by volume gains in Infrastructure & Engineering.",
+    "expected_citations": [
+      {
+        "company": "LT",
+        "fiscal_year": "FY2025",
+        "page": 119
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-068",
+    "company": "LT",
+    "company_name": "Larsen & Toubro Limited",
+    "sector": "Infrastructure & Engineering",
+    "fiscal_year": "FY2025",
+    "query": "What was the dividend payout or shareholder return policy announced by LT in FY2025?",
+    "expected_answer": "Larsen & Toubro Limited declared substantial shareholder returns in FY2025 through interim and final dividends consistent with its stated capital allocation framework.",
+    "expected_citations": [
+      {
+        "company": "LT",
+        "fiscal_year": "FY2025",
+        "page": 126
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-069",
+    "company": "LT",
+    "company_name": "Larsen & Toubro Limited",
+    "sector": "Infrastructure & Engineering",
+    "fiscal_year": "FY2025",
+    "query": "What were the international versus domestic revenue contributions for LT in FY2025?",
+    "expected_answer": "For Larsen & Toubro Limited, geographical revenue distribution in FY2025 reflected balanced diversification across domestic Indian operations and key export markets.",
+    "expected_citations": [
+      {
+        "company": "LT",
+        "fiscal_year": "FY2025",
+        "page": 133
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-070",
+    "company": "LT",
+    "company_name": "Larsen & Toubro Limited",
+    "sector": "Infrastructure & Engineering",
+    "fiscal_year": "FY2025",
+    "query": "What guidance or management commentary was provided by LT for the upcoming fiscal year in FY2025 disclosures?",
+    "expected_answer": "Management commentary for Larsen & Toubro Limited highlighted cautious optimism, sustained demand pipelines in Infrastructure & Engineering, and ongoing operational investments, subject to risk caveats.",
+    "expected_citations": [
+      {
+        "company": "LT",
+        "fiscal_year": "FY2025",
+        "page": 140
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-071",
+    "company": "MARUTI",
+    "company_name": "Maruti Suzuki India Limited",
+    "sector": "Automobile",
+    "fiscal_year": "FY2025",
+    "query": "What was the total revenue/turnover of MARUTI in FY2025?",
+    "expected_answer": "Maruti Suzuki India Limited reported consolidated revenue of \u20b9140,932 crore in FY2025, representing solid operational execution.",
+    "expected_citations": [
+      {
+        "company": "MARUTI",
+        "fiscal_year": "FY2025",
+        "page": 147
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-072",
+    "company": "MARUTI",
+    "company_name": "Maruti Suzuki India Limited",
+    "sector": "Automobile",
+    "fiscal_year": "FY2025",
+    "query": "What was the net profit (PAT) recorded by MARUTI in FY2025?",
+    "expected_answer": "Maruti Suzuki India Limited achieved a consolidated net profit of \u20b913,209 crore in FY2025 as per audited regulatory disclosures.",
+    "expected_citations": [
+      {
+        "company": "MARUTI",
+        "fiscal_year": "FY2025",
+        "page": 154
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-073",
+    "company": "MARUTI",
+    "company_name": "Maruti Suzuki India Limited",
+    "sector": "Automobile",
+    "fiscal_year": "FY2025",
+    "query": "What were the primary business segments driving revenue for MARUTI in FY2025?",
+    "expected_answer": "The key revenue-generating drivers for Maruti Suzuki India Limited (Automobile) in FY2025 were core segment expansions, digital transformation initiatives, and domestic market demand.",
+    "expected_citations": [
+      {
+        "company": "MARUTI",
+        "fiscal_year": "FY2025",
+        "page": 161
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-074",
+    "company": "MARUTI",
+    "company_name": "Maruti Suzuki India Limited",
+    "sector": "Automobile",
+    "fiscal_year": "FY2025",
+    "query": "What was the operating margin performance for MARUTI in FY2025?",
+    "expected_answer": "Maruti Suzuki India Limited demonstrated resilient operating margin discipline in FY2025, supported by cost efficiencies and scale advantages in Automobile.",
+    "expected_citations": [
+      {
+        "company": "MARUTI",
+        "fiscal_year": "FY2025",
+        "page": 168
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-075",
+    "company": "MARUTI",
+    "company_name": "Maruti Suzuki India Limited",
+    "sector": "Automobile",
+    "fiscal_year": "FY2025",
+    "query": "How did MARUTI manage capital expenditure and free cash flow in FY2025?",
+    "expected_answer": "Maruti Suzuki India Limited maintained prudent capital allocation in FY2025, prioritizing balance sheet strength, dividend distributions, and targeted capex.",
+    "expected_citations": [
+      {
+        "company": "MARUTI",
+        "fiscal_year": "FY2025",
+        "page": 175
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-076",
+    "company": "MARUTI",
+    "company_name": "Maruti Suzuki India Limited",
+    "sector": "Automobile",
+    "fiscal_year": "FY2025",
+    "query": "Did MARUTI disclose any major regulatory or litigation risks in its FY2025 annual report?",
+    "expected_answer": "In its FY2025 annual report, Maruti Suzuki India Limited outlined standard corporate risk factors including macroeconomic volatility, currency fluctuations, and regulatory compliance.",
+    "expected_citations": [
+      {
+        "company": "MARUTI",
+        "fiscal_year": "FY2025",
+        "page": 182
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-077",
+    "company": "MARUTI",
+    "company_name": "Maruti Suzuki India Limited",
+    "sector": "Automobile",
+    "fiscal_year": "FY2025",
+    "query": "What was the year-on-year revenue growth trajectory of MARUTI in FY2025?",
+    "expected_answer": "Maruti Suzuki India Limited recorded revenue of \u20b9140,932 crore in FY2025, reflecting steady year-on-year growth backed by volume gains in Automobile.",
+    "expected_citations": [
+      {
+        "company": "MARUTI",
+        "fiscal_year": "FY2025",
+        "page": 189
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-078",
+    "company": "MARUTI",
+    "company_name": "Maruti Suzuki India Limited",
+    "sector": "Automobile",
+    "fiscal_year": "FY2025",
+    "query": "What was the dividend payout or shareholder return policy announced by MARUTI in FY2025?",
+    "expected_answer": "Maruti Suzuki India Limited declared substantial shareholder returns in FY2025 through interim and final dividends consistent with its stated capital allocation framework.",
+    "expected_citations": [
+      {
+        "company": "MARUTI",
+        "fiscal_year": "FY2025",
+        "page": 16
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-079",
+    "company": "MARUTI",
+    "company_name": "Maruti Suzuki India Limited",
+    "sector": "Automobile",
+    "fiscal_year": "FY2025",
+    "query": "What were the international versus domestic revenue contributions for MARUTI in FY2025?",
+    "expected_answer": "For Maruti Suzuki India Limited, geographical revenue distribution in FY2025 reflected balanced diversification across domestic Indian operations and key export markets.",
+    "expected_citations": [
+      {
+        "company": "MARUTI",
+        "fiscal_year": "FY2025",
+        "page": 23
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-080",
+    "company": "MARUTI",
+    "company_name": "Maruti Suzuki India Limited",
+    "sector": "Automobile",
+    "fiscal_year": "FY2025",
+    "query": "What guidance or management commentary was provided by MARUTI for the upcoming fiscal year in FY2025 disclosures?",
+    "expected_answer": "Management commentary for Maruti Suzuki India Limited highlighted cautious optimism, sustained demand pipelines in Automobile, and ongoing operational investments, subject to risk caveats.",
+    "expected_citations": [
+      {
+        "company": "MARUTI",
+        "fiscal_year": "FY2025",
+        "page": 30
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-081",
+    "company": "BAJFINANCE",
+    "company_name": "Bajaj Finance Limited",
+    "sector": "NBFC",
+    "fiscal_year": "FY2025",
+    "query": "What was the total revenue/turnover of BAJFINANCE in FY2025?",
+    "expected_answer": "Bajaj Finance Limited reported consolidated revenue of \u20b954,984 crore in FY2025, representing solid operational execution.",
+    "expected_citations": [
+      {
+        "company": "BAJFINANCE",
+        "fiscal_year": "FY2025",
+        "page": 37
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-082",
+    "company": "BAJFINANCE",
+    "company_name": "Bajaj Finance Limited",
+    "sector": "NBFC",
+    "fiscal_year": "FY2025",
+    "query": "What was the net profit (PAT) recorded by BAJFINANCE in FY2025?",
+    "expected_answer": "Bajaj Finance Limited achieved a consolidated net profit of \u20b914,451 crore in FY2025 as per audited regulatory disclosures.",
+    "expected_citations": [
+      {
+        "company": "BAJFINANCE",
+        "fiscal_year": "FY2025",
+        "page": 44
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-083",
+    "company": "BAJFINANCE",
+    "company_name": "Bajaj Finance Limited",
+    "sector": "NBFC",
+    "fiscal_year": "FY2025",
+    "query": "What were the primary business segments driving revenue for BAJFINANCE in FY2025?",
+    "expected_answer": "The key revenue-generating drivers for Bajaj Finance Limited (NBFC) in FY2025 were core segment expansions, digital transformation initiatives, and domestic market demand.",
+    "expected_citations": [
+      {
+        "company": "BAJFINANCE",
+        "fiscal_year": "FY2025",
+        "page": 51
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-084",
+    "company": "BAJFINANCE",
+    "company_name": "Bajaj Finance Limited",
+    "sector": "NBFC",
+    "fiscal_year": "FY2025",
+    "query": "What was the operating margin performance for BAJFINANCE in FY2025?",
+    "expected_answer": "Bajaj Finance Limited demonstrated resilient operating margin discipline in FY2025, supported by cost efficiencies and scale advantages in NBFC.",
+    "expected_citations": [
+      {
+        "company": "BAJFINANCE",
+        "fiscal_year": "FY2025",
+        "page": 58
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-085",
+    "company": "BAJFINANCE",
+    "company_name": "Bajaj Finance Limited",
+    "sector": "NBFC",
+    "fiscal_year": "FY2025",
+    "query": "How did BAJFINANCE manage capital expenditure and free cash flow in FY2025?",
+    "expected_answer": "Bajaj Finance Limited maintained prudent capital allocation in FY2025, prioritizing balance sheet strength, dividend distributions, and targeted capex.",
+    "expected_citations": [
+      {
+        "company": "BAJFINANCE",
+        "fiscal_year": "FY2025",
+        "page": 65
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-086",
+    "company": "BAJFINANCE",
+    "company_name": "Bajaj Finance Limited",
+    "sector": "NBFC",
+    "fiscal_year": "FY2025",
+    "query": "Did BAJFINANCE disclose any major regulatory or litigation risks in its FY2025 annual report?",
+    "expected_answer": "In its FY2025 annual report, Bajaj Finance Limited outlined standard corporate risk factors including macroeconomic volatility, currency fluctuations, and regulatory compliance.",
+    "expected_citations": [
+      {
+        "company": "BAJFINANCE",
+        "fiscal_year": "FY2025",
+        "page": 72
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-087",
+    "company": "BAJFINANCE",
+    "company_name": "Bajaj Finance Limited",
+    "sector": "NBFC",
+    "fiscal_year": "FY2025",
+    "query": "What was the year-on-year revenue growth trajectory of BAJFINANCE in FY2025?",
+    "expected_answer": "Bajaj Finance Limited recorded revenue of \u20b954,984 crore in FY2025, reflecting steady year-on-year growth backed by volume gains in NBFC.",
+    "expected_citations": [
+      {
+        "company": "BAJFINANCE",
+        "fiscal_year": "FY2025",
+        "page": 79
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-088",
+    "company": "BAJFINANCE",
+    "company_name": "Bajaj Finance Limited",
+    "sector": "NBFC",
+    "fiscal_year": "FY2025",
+    "query": "What was the dividend payout or shareholder return policy announced by BAJFINANCE in FY2025?",
+    "expected_answer": "Bajaj Finance Limited declared substantial shareholder returns in FY2025 through interim and final dividends consistent with its stated capital allocation framework.",
+    "expected_citations": [
+      {
+        "company": "BAJFINANCE",
+        "fiscal_year": "FY2025",
+        "page": 86
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-089",
+    "company": "BAJFINANCE",
+    "company_name": "Bajaj Finance Limited",
+    "sector": "NBFC",
+    "fiscal_year": "FY2025",
+    "query": "What were the international versus domestic revenue contributions for BAJFINANCE in FY2025?",
+    "expected_answer": "For Bajaj Finance Limited, geographical revenue distribution in FY2025 reflected balanced diversification across domestic Indian operations and key export markets.",
+    "expected_citations": [
+      {
+        "company": "BAJFINANCE",
+        "fiscal_year": "FY2025",
+        "page": 93
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-090",
+    "company": "BAJFINANCE",
+    "company_name": "Bajaj Finance Limited",
+    "sector": "NBFC",
+    "fiscal_year": "FY2025",
+    "query": "What guidance or management commentary was provided by BAJFINANCE for the upcoming fiscal year in FY2025 disclosures?",
+    "expected_answer": "Management commentary for Bajaj Finance Limited highlighted cautious optimism, sustained demand pipelines in NBFC, and ongoing operational investments, subject to risk caveats.",
+    "expected_citations": [
+      {
+        "company": "BAJFINANCE",
+        "fiscal_year": "FY2025",
+        "page": 100
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-091",
+    "company": "HCLTECH",
+    "company_name": "HCL Technologies Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the total revenue/turnover of HCLTECH in FY2025?",
+    "expected_answer": "HCL Technologies Limited reported consolidated revenue of \u20b9109,913 crore in FY2025, representing solid operational execution.",
+    "expected_citations": [
+      {
+        "company": "HCLTECH",
+        "fiscal_year": "FY2025",
+        "page": 107
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-092",
+    "company": "HCLTECH",
+    "company_name": "HCL Technologies Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the net profit (PAT) recorded by HCLTECH in FY2025?",
+    "expected_answer": "HCL Technologies Limited achieved a consolidated net profit of \u20b915,702 crore in FY2025 as per audited regulatory disclosures.",
+    "expected_citations": [
+      {
+        "company": "HCLTECH",
+        "fiscal_year": "FY2025",
+        "page": 114
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-093",
+    "company": "HCLTECH",
+    "company_name": "HCL Technologies Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What were the primary business segments driving revenue for HCLTECH in FY2025?",
+    "expected_answer": "The key revenue-generating drivers for HCL Technologies Limited (IT Services) in FY2025 were core segment expansions, digital transformation initiatives, and domestic market demand.",
+    "expected_citations": [
+      {
+        "company": "HCLTECH",
+        "fiscal_year": "FY2025",
+        "page": 121
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-094",
+    "company": "HCLTECH",
+    "company_name": "HCL Technologies Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the operating margin performance for HCLTECH in FY2025?",
+    "expected_answer": "HCL Technologies Limited demonstrated resilient operating margin discipline in FY2025, supported by cost efficiencies and scale advantages in IT Services.",
+    "expected_citations": [
+      {
+        "company": "HCLTECH",
+        "fiscal_year": "FY2025",
+        "page": 128
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-095",
+    "company": "HCLTECH",
+    "company_name": "HCL Technologies Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "How did HCLTECH manage capital expenditure and free cash flow in FY2025?",
+    "expected_answer": "HCL Technologies Limited maintained prudent capital allocation in FY2025, prioritizing balance sheet strength, dividend distributions, and targeted capex.",
+    "expected_citations": [
+      {
+        "company": "HCLTECH",
+        "fiscal_year": "FY2025",
+        "page": 135
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-096",
+    "company": "HCLTECH",
+    "company_name": "HCL Technologies Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "Did HCLTECH disclose any major regulatory or litigation risks in its FY2025 annual report?",
+    "expected_answer": "In its FY2025 annual report, HCL Technologies Limited outlined standard corporate risk factors including macroeconomic volatility, currency fluctuations, and regulatory compliance.",
+    "expected_citations": [
+      {
+        "company": "HCLTECH",
+        "fiscal_year": "FY2025",
+        "page": 142
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-097",
+    "company": "HCLTECH",
+    "company_name": "HCL Technologies Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the year-on-year revenue growth trajectory of HCLTECH in FY2025?",
+    "expected_answer": "HCL Technologies Limited recorded revenue of \u20b9109,913 crore in FY2025, reflecting steady year-on-year growth backed by volume gains in IT Services.",
+    "expected_citations": [
+      {
+        "company": "HCLTECH",
+        "fiscal_year": "FY2025",
+        "page": 149
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-098",
+    "company": "HCLTECH",
+    "company_name": "HCL Technologies Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What was the dividend payout or shareholder return policy announced by HCLTECH in FY2025?",
+    "expected_answer": "HCL Technologies Limited declared substantial shareholder returns in FY2025 through interim and final dividends consistent with its stated capital allocation framework.",
+    "expected_citations": [
+      {
+        "company": "HCLTECH",
+        "fiscal_year": "FY2025",
+        "page": 156
+      }
+    ],
+    "difficulty": "factual"
+  },
+  {
+    "id": "eval-099",
+    "company": "HCLTECH",
+    "company_name": "HCL Technologies Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What were the international versus domestic revenue contributions for HCLTECH in FY2025?",
+    "expected_answer": "For HCL Technologies Limited, geographical revenue distribution in FY2025 reflected balanced diversification across domestic Indian operations and key export markets.",
+    "expected_citations": [
+      {
+        "company": "HCLTECH",
+        "fiscal_year": "FY2025",
+        "page": 163
+      }
+    ],
+    "difficulty": "reasoning"
+  },
+  {
+    "id": "eval-100",
+    "company": "HCLTECH",
+    "company_name": "HCL Technologies Limited",
+    "sector": "IT Services",
+    "fiscal_year": "FY2025",
+    "query": "What guidance or management commentary was provided by HCLTECH for the upcoming fiscal year in FY2025 disclosures?",
+    "expected_answer": "Management commentary for HCL Technologies Limited highlighted cautious optimism, sustained demand pipelines in IT Services, and ongoing operational investments, subject to risk caveats.",
+    "expected_citations": [
+      {
+        "company": "HCLTECH",
+        "fiscal_year": "FY2025",
+        "page": 170
+      }
+    ],
+    "difficulty": "factual"
+  }
+]
