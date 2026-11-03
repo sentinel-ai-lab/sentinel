@@ -18,8 +18,8 @@ A **production-grade multi-agent LLM system** that ingests BSE/NSE filings and e
 
 ---
 
-![Demo placeholder](docs/img/demo-placeholder.png)
-> *Demo GIF will be added at Week 12*
+![Demo placeholder]([docs/img/demo-placeholder.png](https://drive.google.com/file/d/15Et7td8FSfOkQdGNmjFgS3SVPtj37iFf/view?usp=sharing)
+
 
 </div>
 
