@@ -18,9 +18,7 @@ A **production-grade multi-agent LLM system** that ingests BSE/NSE filings and e
 
 ---
 
-<iframe src="https://drive.google.com/file/d/1SVY5u053cqItFKe3K1uHBuvfFzr8_JgF/view?usp=sharing" width="640" height="480" allow="autoplay"></iframe>
-
-
+![Sentinel Demo](Sentinel-demo.gif)
 
 </div>
 
